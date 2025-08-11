@@ -1,5 +1,15 @@
 /**********************************************************************************************************************/
 
-/* You can add global styles to this file, and also import other style files */
+// You can add global styles to this file, and also import other style files
 
 /**********************************************************************************************************************/
+
+// OVERRIDES
+@import 'assets/scss/material-overrides.scss';
+
+// SCSS PROJECT
+@import 'assets/scss/reset.scss';
+@import 'assets/scss/varibles.scss';
+
+// FONTS
+@import 'assets/scss/fonts.scss';
