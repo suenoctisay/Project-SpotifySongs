@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,6 +8,6 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html'
 })
 
-export class App {
+export class AppComponent {
   protected readonly title = signal('SpotifySongs');
 }
