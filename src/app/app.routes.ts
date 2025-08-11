@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const app_routes: Routes = [
   {
-    path: '', redirectTo: 'songs', pathMatch: 'full'
+    path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
     path: 'home',
