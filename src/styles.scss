@@ -3,13 +3,150 @@
 // You can add global styles to this file, and also import other style files
 
 /**********************************************************************************************************************/
-
-// OVERRIDES
-@import 'assets/scss/material-overrides.scss';
+// ANGULAR MATERIAL
+@use 'assets/scss/material-overrides.scss';
+@use 'assets/scss/material-theme-colors.scss';
 
 // SCSS PROJECT
-@import 'assets/scss/reset.scss';
-@import 'assets/scss/varibles.scss';
+@use 'assets/scss/reset.scss';
+@use 'assets/scss/varibles.scss';
 
 // FONTS
-@import 'assets/scss/fonts.scss';
+@use 'assets/scss/fonts.scss';
+
+
+@use '@angular/material' as mat;
+html {
+  @include mat.theme((
+    color: (
+      primary: (
+        0: #000000,
+        10: #002105,
+        20: #00390d,
+        25: #004611,
+        30: #005316,
+        35: #00601b,
+        40: #006e20,
+        50: #008a2b,
+        60: #00a836,
+        70: #2bc54a,
+        80: #50e163,
+        90: #6fff7c,
+        95: #c8ffc2,
+        98: #ebffe5,
+        99: #f6fff0,
+        100: #ffffff,
+      ),
+      secondary: (
+        0: #000000,
+        10: #002105,
+        20: #00390d,
+        25: #004611,
+        30: #10521b,
+        35: #1f5e26,
+        40: #2c6b31,
+        50: #468547,
+        60: #5f9f5f,
+        70: #79bb77,
+        80: #93d790,
+        90: #aff3aa,
+        95: #c8ffc2,
+        98: #ebffe5,
+        99: #f6fff0,
+        100: #ffffff,
+      ),
+      tertiary: (
+        0: #000000,
+        10: #001e2c,
+        20: #003549,
+        25: #004058,
+        30: #004d68,
+        35: #005978,
+        40: #006688,
+        50: #0080ab,
+        60: #009cce,
+        70: #00b8f3,
+        80: #77d1ff,
+        90: #c2e8ff,
+        95: #e2f3ff,
+        98: #f5faff,
+        99: #fbfcff,
+        100: #ffffff,
+      ),
+      neutral: (
+        0: #000000,
+        10: #161e15,
+        20: #2a3329,
+        25: #353e34,
+        30: #41493f,
+        35: #4c554a,
+        40: #586155,
+        50: #717a6e,
+        60: #8a9387,
+        70: #a5aea1,
+        80: #c0c9bb,
+        90: #dce5d7,
+        95: #ebf3e5,
+        98: #f3fced,
+        99: #f6fff0,
+        100: #ffffff,
+        4: #091008,
+        6: #0e150d,
+        12: #1a2219,
+        17: #242c23,
+        22: #2f372d,
+        24: #333b31,
+        87: #d4ddce,
+        92: #e2ebdc,
+        94: #e8f1e2,
+        96: #eef6e8,
+      ),
+      neutral-variant: (
+        0: #000000,
+        10: #121e12,
+        20: #273426,
+        25: #323f30,
+        30: #3d4a3b,
+        35: #495646,
+        40: #546252,
+        50: #6d7b6a,
+        60: #869582,
+        70: #a1af9c,
+        80: #bccbb7,
+        90: #d8e7d2,
+        95: #e6f5e0,
+        98: #effee8,
+        99: #f6fff0,
+        100: #ffffff,
+      ),
+      error: (
+        0: #000000,
+        10: #410002,
+        20: #690005,
+        25: #7e0007,
+        30: #93000a,
+        35: #a80710,
+        40: #ba1a1a,
+        50: #de3730,
+        60: #ff5449,
+        70: #ff897d,
+        80: #ffb4ab,
+        90: #ffdad6,
+        95: #ffedea,
+        98: #fff8f7,
+        99: #fffbff,
+        100: #ffffff,
+      ),
+    ),
+    typography: Nata Sans,
+    density: 0,
+  ));
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+}
