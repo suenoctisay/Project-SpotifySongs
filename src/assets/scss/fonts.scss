@@ -1,37 +1,55 @@
 @font-face {
   font-family: 'Nata Sans';
   src: url('./../fonts/NataSans-Thin.ttf');
-  font-weight: thin;
+  font-weight: 100;
   font-style: normal;
 }
 @font-face {
   font-family: 'Nata Sans';
   src: url('./../fonts/NataSans-ExtraLight.ttf');
-  font-weight: lighter;
+  font-weight: 200;
   font-style: normal;
 }
 @font-face {
   font-family: 'Nata Sans';
   src: url('./../fonts/NataSans-Light.ttf');
-  font-weight: light;
+  font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Nata Sans';
   src: url('./../fonts/NataSans-Regular.ttf');
-  font-weight: normal;
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nata Sans';
+  src: url('./../fonts/NataSans-Medium.ttf');
+  font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'Nata Sans';
   src: url('./../fonts/NataSans-SemiBold.ttf');
-  font-weight: bold;
+  font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: 'Nata Sans';
   src: url('./../fonts/NataSans-Bold.ttf');
-  font-weight: bolder;
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nata Sans';
+  src: url('./../fonts/NataSans-ExtraBold.ttf');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nata Sans';
+  src: url('./../fonts/NataSans-Black.ttf');
+  font-weight: 900;
   font-style: normal;
 }
 
