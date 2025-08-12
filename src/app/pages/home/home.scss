@@ -1,0 +1,88 @@
+:host{
+  .menu{
+    background-color: var(--green-spotify);
+    background-image: url('../../../assets/img/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 32px 32px;
+    &_logo-spotify{
+      height: 125px;
+      padding: 0 16px;
+    }
+    &_part01, &_part02{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 16px;
+      gap: 16px;
+    }
+    &_card{
+      background-color: var(--neutral-1);
+      border-radius: 0;
+      border: 3px solid var(--green-spotify);
+      flex: 1 1 calc(33.33% - 32px); /* Cada card ocupa 1/3 da largura com espaçamento */
+      max-width: calc(33.33% - 32px); /* Limita a largura máxima */
+      min-width: 250px; /* Define uma largura mínima para evitar que os cards fiquem muito pequenos */
+      height: 250px; /* Define uma altura fixa para os cards */
+      display: flex;
+      justify-content: space-between; /* Espaça o conteúdo interno */
+      &_header{
+        background-image: url('../../../assets/img/bg-dark.jpg');
+        color: var(--neutral-1);
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        &_title{
+          font-weight: var(--extra-light);
+          font-size: var(--large);
+          color: var(--neutral-1);
+          text-transform: uppercase;
+          padding: 0 16px;
+          margin: 0;
+        }
+      }
+      &_body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 8px 16px;
+        margin: 0;
+        font-size: var(--small);
+        font-weight: var(--regular);
+      }
+      &_actions{
+        &_icon{
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+      &_icon{
+        width: 48px;
+        height: 48px;
+        font-size: 48px;
+        display: flex;
+        justify-content: center;
+        &_container{
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .menu_card { /* Cada card ocupa metade da largura em telas menores */
+      flex: 1 1 calc(50% - 16px);
+      max-width: calc(50% - 16px);
+    }
+  }
+  @media (max-width: 480px) {
+    .menu_card { /* Cada card ocupa 100% da largura em telas muito pequenas */
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+}
