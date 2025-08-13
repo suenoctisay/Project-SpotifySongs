@@ -1,0 +1,64 @@
+:host {
+  background-image: url('./../../../../assets/img/bg-lighter.png');
+  z-index: 5;
+  display: block;
+  width: 100%;
+  /*-- HEADER --*/
+  .header{
+    padding: 0 32px;
+    box-shadow: 0 2px 16px var(--green-light);
+    position: relative;
+    z-index: 3;
+    &_brand{
+      padding-left: 8px;
+      color: var(--green-spotify);
+      font-size: var(--medium);
+      font-weight: var(--bold);
+      cursor: pointer;
+    }
+    &_btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:hover{
+        background-color: var(--green-spotify);
+        color: var(--neutral-1);
+      }
+      &_icon{
+        margin: 0;
+      }
+      &_text{
+        font-size: var(--medium);
+        font-weight: var(--bold);
+        padding-left: 4px;
+      }
+    }
+    &_spacer{
+      flex: 1 1 auto;
+    }
+  }
+  /*-- SIDENAV --*/
+  .sidenav-container {
+    background-image: url('./../../../../assets/img/bg-lighter.png');
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    box-shadow: 0 2px 16px var(--green-light);
+  }
+  .sidenav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 16px;
+    &_btn{
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 1px solid var(--neutral-10);
+      border-radius: 0;
+      margin: 8px 0;
+    }
+  }
+}

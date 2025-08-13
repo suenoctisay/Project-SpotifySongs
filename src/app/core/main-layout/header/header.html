@@ -1,1 +1,68 @@
-<p>header works!</p>
+<!-- HEADER -->
+<mat-toolbar class="header">
+  <button class="header_btn" matIconButton aria-label="menu button" (click)="drawer.toggle()">
+    <mat-icon class="header_btn_icon">menu</mat-icon>
+  </button>
+  <span class="header_brand" (click)="redirectToHome()">Spotify Songs</span>
+  <span class="header_spacer"></span>
+  <button class="header_btn" matButton aria-label="logout button">
+    <mat-icon class="header_btn_icon">logout</mat-icon>
+    <span class="header_btn_text">Logout</span>
+  </button>
+</mat-toolbar>
+<!-- HEADER -->
+
+<!-- SIDENAV -->
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <!-- home -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+
+    <!-- songs -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>music_note</mat-icon>
+      <span>Songs</span>
+    </button>
+
+    <!-- artists -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>recent_actors</mat-icon>
+      <span>Artists</span>
+    </button>
+
+    <!-- albums -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>album</mat-icon>
+      <span>Albums</span>
+    </button>
+
+    <!-- podcasts -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>mic</mat-icon>
+      <span>Podcasts</span>
+    </button>
+
+    <!-- playlists -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>playlist_play</mat-icon>
+      <span>Playlists</span>
+    </button>
+
+    <!-- genres & moods -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>category</mat-icon>
+      <span>Genres & Moods</span>
+    </button>
+
+    <!-- settings -->
+    <button class="sidenav_btn" matButton>
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+
+  </mat-drawer>
+</mat-drawer-container>
+<!-- SIDENAV -->
