@@ -9,7 +9,7 @@ export const app_routes: Routes = [
     loadComponent: () => import('./pages/home/home').then(c => c.HomeComponent),
   },
   {
-    path : 'songs',
+    path: 'songs',
     loadComponent: () => import('./pages/songs/songs').then(c => c.SongsComponent),
   },
 ];

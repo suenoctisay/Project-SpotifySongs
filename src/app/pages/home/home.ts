@@ -1,3 +1,4 @@
+import { red } from './../../../../node_modules/@colors/colors/index.d';
 import { Component } from '@angular/core';
 
 // angular material imports
@@ -7,13 +8,18 @@ import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-home',
+  templateUrl: './home.html',
+  styleUrl: './home.scss',
   imports: [
     MatCardModule,
     MatIcon,
     MatButton
   ],
-  templateUrl: './home.html',
-  styleUrl: './home.scss'
 })
 
-export class HomeComponent { }
+export class HomeComponent {
+
+  redirectToSongs() {
+    window.location.href = '/songs';
+  }
+}
