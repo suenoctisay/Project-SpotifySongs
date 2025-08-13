@@ -1,0 +1,20 @@
+:host{
+  .breadcrumb{
+    padding: 16px 32px 0 32px;
+    &_nav-item-a{
+      color: var(--green-spotify);
+      font-size: var(--small);
+    }
+    &_nav-item-divider{
+      padding: 0 8px;
+    }
+    &_nav-item{
+      font-size: var(--small);
+    }
+    a:hover{
+      cursor: pointer;
+      font-weight: var(--semi-bold);
+      border-bottom: 1px solid var(--green-spotify);
+    }
+  }
+}
