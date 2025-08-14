@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BreadcrumbService } from '../../services/breadcrumb.service';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.html',
-  styleUrl: './breadcrumb.scss',
-  imports: [ ],
+  styleUrls: ['./breadcrumb.scss'],
+  imports: [
+    CommonModule
+  ],
 })
 
-export class BreadcrumbComponent { }
+export class BreadcrumbComponent implements OnInit {
+  breadcrumbs: Array<{ label: string; url: string }> = [];
+
+  constructor(private breadcrumbService: BreadcrumbService) {}
+
+  ngOnInit(): void {
+    this.breadcrumbService.breadcrumbs$.subscribe((breadcrumbs) => {
+      this.breadcrumbs = breadcrumbs;
+    });
+  }
+}

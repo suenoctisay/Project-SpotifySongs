@@ -5,5 +5,6 @@ export const home_routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    data: { breadcrumb: 'Home' },
   },
 ];
