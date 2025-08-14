@@ -19,14 +19,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 })
 
 export class HeaderCompoenent {
-  showFiller = false;
-  isSidenavVisible: boolean = false;
-
-  toggleSidenav(): void {
-    this.isSidenavVisible = !this.isSidenavVisible;
-  }
-
   redirectToHome() {
     window.location.href = '/home';
+  }
+
+  redirectToSongs() {
+    window.location.href = '/songs';
   }
 }

@@ -16,13 +16,13 @@
 <mat-drawer-container class="sidenav-container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side">
     <!-- home -->
-    <button class="sidenav_btn" matButton>
+    <button class="sidenav_btn" matButton (click)="redirectToHome()">
       <mat-icon>home</mat-icon>
       <span>Home</span>
     </button>
 
     <!-- songs -->
-    <button class="sidenav_btn" matButton>
+    <button class="sidenav_btn" matButton (click)="redirectToSongs()">
       <mat-icon>music_note</mat-icon>
       <span>Songs</span>
     </button>
