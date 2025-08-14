@@ -1,0 +1,19 @@
+<nav class="breadcrumb">
+  <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
+    @if (!last) {
+      <ng-container>
+        <a class="breadcrumb_nav-item-a">
+          {{ breadcrumb.label }}
+        </a>
+        <span class="breadcrumb_nav-item-divider"> / </span>
+      </ng-container>
+    }
+    @if (last) {
+      <ng-container>
+        <span class="breadcrumb_nav-item">
+          {{ breadcrumb.label }}
+        </span>
+      </ng-container>
+    }
+  </ng-container>
+</nav>
