@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
-import { SongsComponent } from "./songs";
+import { SongsHomeComponent } from "./components/home/home";
 
 export const songs_routes: Routes = [
   {
     path: '',
-    component: SongsComponent,
+    component: SongsHomeComponent,
   },
 ];
