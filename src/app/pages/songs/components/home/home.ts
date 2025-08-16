@@ -6,11 +6,10 @@ import { FooterComponent } from '../../../../core/main-layout/footer/footer';
 import { BreadcrumbComponent } from '../../../../core/main-layout/breadcrumb/breadcrumb';
 
 // angular material components
-import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { SongsFiltersComponent } from "../songs-filters/songs-filters";
+import { SongsTableComponent } from '../songs-table/songs-table';
 
 
 @Component({
@@ -24,6 +23,7 @@ import { SongsFiltersComponent } from "../songs-filters/songs-filters";
     BreadcrumbComponent,
 
     SongsFiltersComponent,
+    SongsTableComponent,
 
     MatExpansionModule
   ],

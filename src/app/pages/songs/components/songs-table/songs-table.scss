@@ -1,0 +1,25 @@
+:host{
+  .songs-table{
+    &_button{
+      margin: 16px 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+    &_table{
+      &_header{
+        background-color: var(--gray-material);
+        border-bottom: 1px solid var(--neutral-3);
+        vertical-align: middle;
+        text-align: center;
+        font-weight: var(--light);
+        font-size: var(--large);
+        color: var(--green-dark);
+      }
+      &_body{
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid var(--neutral-3);
+      }
+    }
+  }
+}

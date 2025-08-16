@@ -1,0 +1,51 @@
+<div class="songs-table">
+
+  <div class="songs-table_button">
+    <button matButton (click)="addNewSong()">
+      Add New Song
+    </button>
+  </div>
+
+
+  <table mat-table [dataSource]="dataSource" class="songs-table_table">
+
+    <!-- Artist -->
+    <ng-container matColumnDef="artist">
+      <th class="songs-table_table_header" mat-header-cell *matHeaderCellDef> Artist </th>
+      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.artist}} </td>
+    </ng-container>
+
+    <!-- Song -->
+    <ng-container matColumnDef="song">
+      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Song </th>
+      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.song}} </td>
+    </ng-container>
+
+    <!-- Album -->
+    <ng-container matColumnDef="album">
+      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Album </th>
+      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.album}} </td>
+    </ng-container>
+
+    <!-- Year -->
+    <ng-container matColumnDef="year">
+      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Year </th>
+      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.year}} </td>
+    </ng-container>
+
+    <!-- Genre -->
+    <ng-container matColumnDef="genre">
+      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Genre </th>
+      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.genre}} </td>
+    </ng-container>
+
+    <!-- Duration -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Duration </th>
+      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.duration}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
