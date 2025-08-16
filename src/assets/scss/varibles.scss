@@ -5,56 +5,58 @@
 /**********************************************************************************************************************/
 
 :root{
-  /*-- COLORS --*/
-    --green-darkest: #08210C;
-    --green-dark: #0C3112;
-    --green-spotify: #3ACF53;
-    --green-light: #CEF3D4;
-    --green-lightest: #EFFBF1;
+/*-- COLORS --*/
+  --green-darkest: #08210C;
+  --green-dark: #0C3112;
+  --green-spotify: #3ACF53;
+  --green-light: #CEF3D4;
+  --green-lightest: #EFFBF1;
 
-    --neutral-1: #F8F9FA;
-    --neutral-2: #F1F3F5;
-    --neutral-3: #E9ECEF;
-    --neutral-4: #DEE2E6;
-    --neutral-5: #CED4DA;
-    --neutral-6: #A8A9AB;
-    --neutral-7: #6A7178;
-    --neutral-8: #4F575E;
-    --neutral-9: #272B30;
-    --neutral-10: #101213;
+  --neutral-1: #F8F9FA;
+  --neutral-2: #F1F3F5;
+  --neutral-3: #E9ECEF;
+  --neutral-4: #DEE2E6;
+  --neutral-5: #CED4DA;
+  --neutral-6: #A8A9AB;
+  --neutral-7: #6A7178;
+  --neutral-8: #4F575E;
+  --neutral-9: #272B30;
+  --neutral-10: #101213;
 
-    --gray-material: whitesmoke;
-
-
-
-  /*-- COMPONENTS --*/
-    --bg-dark: url('../img/bg-dark.jpg');
-    --bg-light: url('../img/bg-light.png');
-    --bg-lighter: url('../img/bg-lighter.png');
+  --gray-material: whitesmoke;
 
 
-  /*-- FONTS --*/
-    --header: 16px;
-    --footer: 12px;
 
-    //size
-    --extra-small: 8px;
-    --smaller: 12px;
-    --small: 16px;
-    --medium: 24px;
-    --regular: 28px;
-    --large: 32px;
-    --larger: 48px;
-    --extra-large: 64px;
-    --huge: 128px;
+/*-- BACKGROUND --*/
+  --bg-home: url('../img/background.png');
+  --bg-green: url('../img/bg-green.jpg');
+  --bg-gray-light: url('../img/bg-gray-light.jpg');
+  --bg-gray-pixel: url('../img/bg-gray-pixel.jpg');
 
-    //weight
-    --extra-light: 100;
-    --lighter: 200;
-    --light: 300;
-    --regular: 400;
-    --medium: 500;
-    --bold: 600;
-    --bolder: 700;
-    --extra-bold: 800;
-  }
+
+
+/*-- FONTS --*/
+  --header: 16px;
+  --footer: 12px;
+
+  //size
+  --extra-small: 8px;
+  --smaller: 12px;
+  --small: 16px;
+  --medium: 24px;
+  --regular: 28px;
+  --large: 32px;
+  --larger: 48px;
+  --extra-large: 64px;
+  --huge: 128px;
+
+  //weight
+  --extra-light: 100;
+  --lighter: 200;
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --bold: 600;
+  --bolder: 700;
+  --extra-bold: 800;
+}
