@@ -1,13 +1,14 @@
 :host{
   .songs-page{
-    background-image: var(--bg-light);
+    background-image: var(--bg-gray);
+    background-size: cover;
     padding: 16px 32px;
     &_accordion{
       margin-bottom: 24px;
       &_expansion-panel{
         &_header{
           background-image: var(--bg-dark);
-          background-size: contain;
+          background-size: cover;
           &_title{
             font-size: var(--regular);
             font-weight: var(--lighter);
@@ -18,15 +19,16 @@
       }
     }
   }
+
   .mat-expansion-panel-header.mat-expanded:focus,
   .mat-expansion-panel-header.mat-expanded:hover {
-    background: var(--bg-dark);
-    background-size: contain;
+    background-image: var(--bg-dark);
+    background-size: cover;
   }
   .mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]),
   .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]),
   .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
-    background: var(--bg-dark);
-    background-size: contain;
+    background-image: var(--bg-dark);
+    background-size: cover;
   }
 }
