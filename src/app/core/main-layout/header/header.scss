@@ -1,5 +1,5 @@
 :host {
-  background-image: url('./../../../../assets/img/bg-lighter.png');
+  background-image: var(--bg-gray);
   z-index: 5;
   display: block;
   width: 100%;
@@ -39,7 +39,7 @@
   }
   /*-- SIDENAV --*/
   .sidenav-container {
-    background-image: url('./../../../../assets/img/bg-lighter.png');
+    background-image: var(--bg-gray);
     height: 100%;
     position: fixed;
     z-index: 2;

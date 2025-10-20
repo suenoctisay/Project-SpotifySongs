@@ -10,6 +10,9 @@ import { SongsTable } from '../../interface/songs-table.interface';
 import { SongsNewModalCompoent } from '../songs-new-modal/songs-new-modal';
 
 
+// services
+import { AppService } from '../../../../core/services/app.service';
+
 // data source for the table
 const Songs_Data: SongsTable[] = [
   {
@@ -102,7 +105,6 @@ const Songs_Data: SongsTable[] = [
   },
 ];
 
-
 @Component({
   selector: 'app-songs-table',
   templateUrl: './songs-table.html',
@@ -126,7 +128,15 @@ export class SongsTableComponent {
     'duration',
   ];
 
-  dataSource = Songs_Data;
+  dataSource: SongsTable[] = Songs_Data;
+
+  constructor(
+    private appService: AppService
+  ) { }
+
+  ngOnInit(): void {
+    this.getFilteredSongs();
+  }
 
   addNewSong(): void {
     const dialogRef = this.dialog.open(SongsNewModalCompoent, {});
@@ -136,4 +146,21 @@ export class SongsTableComponent {
     });
   }
 
+  getFilteredSongs(): void {
+    this.appService.setSongs().subscribe((saveValue) => {
+      if (!saveValue) {
+        this.dataSource = Songs_Data;
+        return;
+      }
+
+      this.dataSource = Songs_Data.filter((song) => {
+        const searchTerm = (saveValue.artist || '') + (saveValue.song || '') + (saveValue.album || '');
+        const combinedFields = song.artist + song.song + song.album;
+        return combinedFields.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+    });
+  }
+
 }
+
+
