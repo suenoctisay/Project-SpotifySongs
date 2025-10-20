@@ -1,0 +1,17 @@
+:host{
+  .new-songs-modal{
+    background: var(--bg-gray);
+    &_title{
+      font-size: var(--large);
+      font-weight: var(--bold);
+      color: var(--green-dark);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    &_form{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+}

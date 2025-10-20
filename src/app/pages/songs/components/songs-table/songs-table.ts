@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 // angular material imports
 import {MatTableModule} from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 // app imports
 import { SongsTable } from '../../interface/songs-table.interface';
-import { MatButtonModule } from '@angular/material/button';
+import { SongsNewModalCompoent } from '../songs-new-modal/songs-new-modal';
+
 
 // data source for the table
 const Songs_Data: SongsTable[] = [
@@ -106,11 +109,13 @@ const Songs_Data: SongsTable[] = [
   styleUrl: './songs-table.scss',
   imports: [
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+
   ],
 })
 
 export class SongsTableComponent {
+  readonly dialog = inject(MatDialog);
 
   displayedColumns: string[] = [
     'artist',
@@ -124,7 +129,11 @@ export class SongsTableComponent {
   dataSource = Songs_Data;
 
   addNewSong(): void {
-    console.log('Add New Song button clicked');
+    const dialogRef = this.dialog.open(SongsNewModalCompoent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
