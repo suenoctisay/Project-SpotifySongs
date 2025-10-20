@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // angular material imports
 import {MatTableModule} from '@angular/material/table';
@@ -6,6 +6,9 @@ import {MatTableModule} from '@angular/material/table';
 // app imports
 import { SongsTable } from '../../interface/songs-table.interface';
 import { MatButtonModule } from '@angular/material/button';
+
+// services
+import { AppService } from '../../../../core/services/app.service';
 
 // data source for the table
 const Songs_Data: SongsTable[] = [
@@ -99,7 +102,6 @@ const Songs_Data: SongsTable[] = [
   },
 ];
 
-
 @Component({
   selector: 'app-songs-table',
   templateUrl: './songs-table.html',
@@ -111,7 +113,6 @@ const Songs_Data: SongsTable[] = [
 })
 
 export class SongsTableComponent {
-
   displayedColumns: string[] = [
     'artist',
     'song',
@@ -121,10 +122,35 @@ export class SongsTableComponent {
     'duration',
   ];
 
-  dataSource = Songs_Data;
+  dataSource: SongsTable[] = Songs_Data;
 
-  addNewSong(): void {
+  constructor(
+    private appService: AppService
+  ) { }
+
+  ngOnInit(): void {
+    this.getFilteredSongs();
+  }
+
+  addNewSong() {
     console.log('Add New Song button clicked');
   }
 
+  getFilteredSongs(): void {
+    this.appService.setSongs().subscribe((saveValue) => {
+      if (!saveValue) {
+        this.dataSource = Songs_Data;
+        return;
+      }
+
+      this.dataSource = Songs_Data.filter((song) => {
+        const searchTerm = (saveValue.artist || '') + (saveValue.song || '') + (saveValue.album || '');
+        const combinedFields = song.artist + song.song + song.album;
+        return combinedFields.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+    });
+  }
+
 }
+
+
