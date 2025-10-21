@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SongsNewModalCompoent } from './songs-new-modal';
+import { SongsNewModalCompoent } from './songs-modal';
 
 describe('SongsNewModal', () => {
   let component: SongsNewModalCompoent;

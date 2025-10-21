@@ -9,8 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-songs-new-modal',
-  templateUrl: './songs-new-modal.html',
-  styleUrl: './songs-new-modal.scss',
+  templateUrl: './songs-modal.html',
+  styleUrl: './songs-modal.scss',
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -23,8 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
   ],
 })
 
-export class SongsNewModalCompoent {
-  readonly dialogRef = inject(MatDialogRef<SongsNewModalCompoent>);
+export class SongsModalCompoent {
+  readonly dialogRef = inject(MatDialogRef<SongsModalCompoent>);
 
   addNewSongForm = new FormGroup({
     artist: new FormControl(''),
@@ -58,7 +58,4 @@ export class SongsNewModalCompoent {
     const newSong = this.addNewSongForm.value;
     this.dialogRef.close(newSong);
   }
-
-
-
 }
