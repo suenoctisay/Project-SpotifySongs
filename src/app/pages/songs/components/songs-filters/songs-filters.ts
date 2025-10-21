@@ -30,12 +30,12 @@ export class SongsFiltersComponent {
   });
 
   constructor(
-    private FormBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private appService: AppService
   ) { }
 
   OnInit() {
-    this.searchSongsForm = this.FormBuilder.group({
+    this.searchSongsForm = this.formBuilder.group({
       artist: [''],
       song: [''],
       album: [''],

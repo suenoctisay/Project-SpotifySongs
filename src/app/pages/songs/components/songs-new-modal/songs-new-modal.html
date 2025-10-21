@@ -2,37 +2,39 @@
   <h2 mat-dialog-title class="new-songs-modal_title">Add New Song</h2>
 
   <mat-dialog-content class="new-songs-modal_content">
-    <form class="new-songs-modal_form" >
+
+    <form class="new-songs-modal_form" [formGroup]="addNewSongForm">
       <mat-form-field class="new-songs-modal_form-field">
         <mat-label>Artist</mat-label>
-        <input matInput placeholder="Ex: Chase Atlantic" />
+        <input matInput placeholder="Ex: Chase Atlantic" formControlName="artist"/>
       </mat-form-field>
 
       <mat-form-field class="new-songs-modal_form-field">
         <mat-label>Song</mat-label>
-        <input matInput placeholder="Ex: Favela" />
+        <input matInput placeholder="Ex: Favela" formControlName="song"/>
       </mat-form-field>
 
       <mat-form-field class="new-songs-modal_form-field">
         <mat-label>Album</mat-label>
-        <input matInput placeholder="Ex: Lost in Heaven" />
+        <input matInput placeholder="Ex: Lost in Heaven" formControlName="album"/>
       </mat-form-field>
 
       <mat-form-field class="new-songs-modal_form-field">
         <mat-label>Year</mat-label>
-        <input matInput placeholder="Ex: 2024" />
+        <input matInput placeholder="Ex: 2024" formControlName="year"/>
       </mat-form-field>
 
       <mat-form-field class="new-songs-modal_form-field">
         <mat-label>Genre</mat-label>
-        <input matInput placeholder="Ex: Pop" />
+        <input matInput placeholder="Ex: Pop" formControlName="genre"/>
       </mat-form-field>
 
       <mat-form-field class="new-songs-modal_form-field">
         <mat-label>Duration</mat-label>
-        <input matInput placeholder="Ex: 3:44" />
+        <input matInput placeholder="Ex: 3:44" formControlName="duration"/>
       </mat-form-field>
     </form>
+
   </mat-dialog-content>
 
   <mat-dialog-actions>

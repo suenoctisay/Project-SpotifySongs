@@ -9,7 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { SongsTable } from '../../interface/songs-table.interface';
 import { SongsNewModalCompoent } from '../songs-new-modal/songs-new-modal';
 
-
 // services
 import { AppService } from '../../../../core/services/app.service';
 
@@ -112,7 +111,6 @@ const Songs_Data: SongsTable[] = [
   imports: [
     MatTableModule,
     MatButtonModule,
-
   ],
 })
 
@@ -141,8 +139,12 @@ export class SongsTableComponent {
   addNewSong(): void {
     const dialogRef = this.dialog.open(SongsNewModalCompoent, {});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((newSong) => {
+      if (newSong) {
+        Songs_Data.push(newSong);
+        this.dataSource = [...Songs_Data];
+        console.log('New song added:', newSong);
+      }
     });
   }
 
