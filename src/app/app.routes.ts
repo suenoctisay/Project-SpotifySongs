@@ -13,8 +13,8 @@ export const app_routes: Routes = [
     path: 'songs',
     loadComponent: () => import('./pages/songs/components/home/home').then(c => c.SongsHomeComponent),
   },
-  {
-    path: '',
-    loadComponent: () => import('./core/main-layout/main-layout').then(c => c.MainLayoutComponent),
-  },
+  // {
+  //   path: '',
+  //   loadComponent: () => import('./core/main-layout/main-layout').then(c => c.MainLayoutComponent),
+  // },
 ];
