@@ -44,6 +44,16 @@
       <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.duration}} </td>
     </ng-container>
 
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef></th>
+      <td mat-cell class="songs-table_table_body" *matCellDef="let element">
+        <button mat-icon-button (click)="editSong(element)">
+          <mat-icon aria-hidden="false" aria-label="actions icon" fontIcon="more_vert"></mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>

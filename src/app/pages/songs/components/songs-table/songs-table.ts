@@ -4,10 +4,11 @@ import { Component, inject } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 // app imports
 import { SongsTable } from '../../interface/songs-table.interface';
-import { SongsNewModalCompoent } from '../songs-new-modal/songs-new-modal';
+import { SongsModalCompoent } from '../songs-modal/songs-modal';
 
 // services
 import { AppService } from '../../../../core/services/app.service';
@@ -111,6 +112,7 @@ const Songs_Data: SongsTable[] = [
   imports: [
     MatTableModule,
     MatButtonModule,
+    MatIconModule
   ],
 })
 
@@ -124,6 +126,7 @@ export class SongsTableComponent {
     'year',
     'genre',
     'duration',
+    'actions',
   ];
 
   dataSource: SongsTable[] = Songs_Data;
@@ -137,7 +140,7 @@ export class SongsTableComponent {
   }
 
   addNewSong(): void {
-    const dialogRef = this.dialog.open(SongsNewModalCompoent, {});
+    const dialogRef = this.dialog.open(SongsModalCompoent, {});
 
     dialogRef.afterClosed().subscribe((newSong) => {
       if (newSong) {
@@ -160,6 +163,22 @@ export class SongsTableComponent {
         const combinedFields = song.artist + song.song + song.album;
         return combinedFields.toLowerCase().includes(searchTerm.toLowerCase());
       });
+    });
+  }
+
+  editSong(song: any): void {
+    const dialogRef = this.dialog.open(SongsModalCompoent, {
+      data: song,
+    });
+
+    dialogRef.afterClosed().subscribe((updatedSong) => {
+      if (updatedSong) {
+        const index = Songs_Data.findIndex((s) => s === song);
+        if (index !== -1) {
+          Songs_Data[index] = updatedSong;
+          this.dataSource = [...Songs_Data];
+        }
+      }
     });
   }
 
