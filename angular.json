@@ -21,6 +21,10 @@
             "polyfills": [
               "zone.js"
             ],
+<<<<<<< HEAD
+=======
+            "outputPath": "dist/SpotifySongs/browser/browser",
+>>>>>>> 7bafa15 (refactor: ajuste "outputPath": "dist/SpotifySongs/browser;browser")
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
