@@ -1,8 +1,8 @@
 :host{
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  // display: block;
+  // width: 100vw;
+  // height: 100vh;
+  // overflow: hidden;
   .menu{
     background-color: var(--green-spotify);
     background-image: var(--bg-home);
@@ -11,8 +11,8 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding: 32px 32px;
-    height: 100vh;
-    overflow: hidden;
+    // height: 100vh;
+    // overflow: hidden;
     &_logo-spotify{
       height: 125px;
       padding: 0 16px;
