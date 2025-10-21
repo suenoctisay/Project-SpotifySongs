@@ -45,6 +45,5 @@ export class SongsFiltersComponent {
   search() {
     const saveValue = this.searchSongsForm.value;
     this.appService.getSongs(saveValue);
-    console.log('Search button clicked', saveValue);
   }
 }

@@ -146,7 +146,6 @@ export class SongsTableComponent {
       if (newSong) {
         Songs_Data.push(newSong);
         this.dataSource = [...Songs_Data];
-        console.log('New song added:', newSong);
       }
     });
   }
