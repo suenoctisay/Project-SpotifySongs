@@ -21,7 +21,7 @@
             "polyfills": [
               "zone.js"
             ],
-            "outputPath": "dist/SpotifySongs/browser",
+            "outputPath": "dist/SpotifySongs/browser/browser",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
