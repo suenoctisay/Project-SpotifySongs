@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 // angular material components
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -14,11 +15,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
     MatSidenavModule
   ],
 })
 
 export class HeaderCompoenent {
+
   redirectToHome() {
     window.location.href = '/home';
   }
@@ -26,4 +29,5 @@ export class HeaderCompoenent {
   redirectToSongs() {
     window.location.href = '/songs';
   }
+
 }

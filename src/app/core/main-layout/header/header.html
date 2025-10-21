@@ -5,7 +5,17 @@
   </button>
   <span class="header_brand" (click)="redirectToHome()">Spotify Songs</span>
   <span class="header_spacer"></span>
-  <button class="header_btn" matButton aria-label="logout button">
+
+  <button matButton aria-label="setting button" [matMenuTriggerFor]="menu">
+    <mat-icon class="header_btn_icon">account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="header_settings-menu">
+    <button mat-menu-item class="header_settings-menu_item">Profile</button>
+    <button mat-menu-item class="header_settings-menu_item">Settings</button>
+    <button mat-menu-item class="header_settings-menu_item">Notifications</button>
+  </mat-menu>
+
+  <button class="header_btn" matButton aria-label="logout button" (click)="redirectToHome()">
     <mat-icon class="header_btn_icon">logout</mat-icon>
     <span class="header_btn_text">Logout</span>
   </button>

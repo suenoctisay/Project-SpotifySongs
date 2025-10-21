@@ -10,5 +10,13 @@
   background-color: var(--neutral-1);
 }
 
-
-
+/*-- MENU DROP-DOWN --*/
+.mat-mdc-menu-content{
+  background-color: var(--gray-material);
+  color: var(--neutral-10);
+}
+.mat-mdc-menu-item{
+  &:hover{
+    color: var(--green-spotify);
+  }
+}
