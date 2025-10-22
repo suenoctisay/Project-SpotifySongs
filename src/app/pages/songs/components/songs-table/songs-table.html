@@ -6,55 +6,99 @@
     </button>
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="songs-table_table">
+  <table mat-table class="songs-table_table"
+    [dataSource]="dataSource"
+    matSort (matSortChange)="sortSongs($event)">
 
     <!-- Artist -->
+
     <ng-container matColumnDef="artist">
-      <th class="songs-table_table_header" mat-header-cell *matHeaderCellDef> Artist </th>
-      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.artist}} </td>
+      <th class="songs-table_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Artist </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.artist}} </td>
+      }
     </ng-container>
 
     <!-- Song -->
     <ng-container matColumnDef="song">
-      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Song </th>
-      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.song}} </td>
+      <th class="songs-table_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Song </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.song}} </td>
+      }
     </ng-container>
 
     <!-- Album -->
     <ng-container matColumnDef="album">
-      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Album </th>
-      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.album}} </td>
-    </ng-container>
+      <th class="songs-table_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Album </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.album}} </td>
+      }
+      </ng-container>
 
     <!-- Year -->
     <ng-container matColumnDef="year">
-      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Year </th>
-      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.year}} </td>
-    </ng-container>
+      <th class="songs-table_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Year </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.year}} </td>
+      }
+      </ng-container>
 
     <!-- Genre -->
     <ng-container matColumnDef="genre">
-      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Genre </th>
-      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.genre}} </td>
-    </ng-container>
+      <th class="songs-table_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Genre </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.genre}} </td>
+      }
+      </ng-container>
 
     <!-- Duration -->
     <ng-container matColumnDef="duration">
-      <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef> Duration </th>
-      <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.duration}} </td>
-    </ng-container>
+      <th class="songs-table_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Duration </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="songs-table_table_body" *matCellDef="let element"> {{element.duration}} </td>
+      }
+      </ng-container>
 
     <!-- Actions -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell class="songs-table_table_header" *matHeaderCellDef></th>
       <td mat-cell class="songs-table_table_body" *matCellDef="let element">
-        <button mat-icon-button (click)="editSong(element)">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon aria-hidden="false" aria-label="actions icon" fontIcon="more_vert"></mat-icon>
         </button>
+        <mat-menu #menu="matMenu" class="header_settings-menu">
+          <button mat-menu-item class="header_settings-menu_item" (click)="editSong(element)">Edit</button>
+          <button mat-menu-item class="header_settings-menu_item" (click)="deleteSong(element)">Delete</button>
+        </mat-menu>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <mat-paginator
+    [length]="dataSource.data.length || 0"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page">
+  </mat-paginator>
 </div>

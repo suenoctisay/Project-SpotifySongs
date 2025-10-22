@@ -18,5 +18,7 @@ export class AppService {
     return this.filterSongs$.asObservable();
   }
 
-
+  onPageReload(): void {
+    localStorage.clear();
+  }
 }

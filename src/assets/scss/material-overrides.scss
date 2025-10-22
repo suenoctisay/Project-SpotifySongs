@@ -20,3 +20,15 @@
     color: var(--green-spotify);
   }
 }
+
+
+/*-- MENU PAGINATOR DROP-DOWN --*/
+.mat-mdc-select-panel-above div.mat-mdc-select-panel{
+  background-color: var(--gray-material);
+  color: var(--neutral-10);
+}
+.mat-mdc-option.mdc-list-item {
+  &:hover{
+    color: var(--green-spotify);
+  }
+}

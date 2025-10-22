@@ -5,4 +5,5 @@ export interface SongsTable {
   year: number;
   genre: string;
   duration: string;
+  paginator: undefined;
 }
