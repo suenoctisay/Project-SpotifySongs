@@ -1,4 +1,3 @@
-import { MainLayoutComponent } from './core/main-layout/main-layout';
 import { Routes } from '@angular/router';
 
 export const app_routes: Routes = [
@@ -13,6 +12,13 @@ export const app_routes: Routes = [
     path: 'songs',
     loadComponent: () => import('./pages/songs/components/home/home').then(c => c.SongsHomeComponent),
   },
+  {
+    path: 'playlist',
+    loadComponent: () => import('./pages/playlist/components/home/home').then(c => c.PlaylistHomeComponent),
+  },
+
+
+
   // {
   //   path: '',
   //   loadComponent: () => import('./core/main-layout/main-layout').then(c => c.MainLayoutComponent),
