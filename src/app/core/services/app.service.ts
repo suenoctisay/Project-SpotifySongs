@@ -6,16 +6,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 
 export class AppService {
-  private filterSongs$ = new BehaviorSubject<any>(''); // colocar $ no final para saber que é um observable
+  private filterValue$ = new BehaviorSubject<any>(''); // colocar $ no final para saber que é um observable
 
   constructor() { }
 
-  getSongs(value: any) {
-    this.filterSongs$.next(value);
+  getValue(value: any) {
+    this.filterValue$.next(value);
   }
 
-  setSongs(): Observable<any> {
-    return this.filterSongs$.asObservable();
+  setValue(): Observable<any> {
+    return this.filterValue$.asObservable();
   }
 
   onPageReload(): void {

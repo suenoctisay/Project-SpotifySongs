@@ -10,9 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppService } from '../../../../core/services/app.service';
 
 @Component({
-  selector: 'app-songs-filters',
-  templateUrl: './songs-filters.html',
-  styleUrl: './songs-filters.scss',
+  selector: 'app-playlist-filter',
+  templateUrl: './playlist-filter.html',
+  styleUrl: './playlist-filter.scss',
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -22,11 +22,10 @@ import { AppService } from '../../../../core/services/app.service';
   ],
 })
 
-export class SongsFiltersComponent {
-  searchSongsForm = new FormGroup({
-    artist: new FormControl(''),
-    song: new FormControl(''),
-    album: new FormControl(''),
+export class PlaylistFilterComponent {
+  searchPlaylistForm = new FormGroup({
+    creator: new FormControl(''),
+    genre: new FormControl(''),
   });
 
   constructor(
@@ -35,15 +34,15 @@ export class SongsFiltersComponent {
   ) { }
 
   OnInit() {
-    this.searchSongsForm = this.formBuilder.group({
-      artist: [''],
-      song: [''],
-      album: [''],
+    this.searchPlaylistForm = this.formBuilder.group({
+      creator: [''],
+      genre: [''],
     });
   }
 
   search() {
-    const saveValue = this.searchSongsForm.value;
+    const saveValue = this.searchPlaylistForm.value;
     this.appService.getValue(saveValue);
+    console.log(saveValue);
   }
 }

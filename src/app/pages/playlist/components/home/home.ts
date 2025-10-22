@@ -5,10 +5,10 @@ import { HeaderCompoenent } from '../../../../core/main-layout/header/header';
 import { FooterComponent } from '../../../../core/main-layout/footer/footer';
 import { BreadcrumbComponent } from '../../../../core/main-layout/breadcrumb/breadcrumb';
 import { PlaylistGalleryComponent } from "../playlist-gallery/playlist-gallery";
+import { PlaylistFilterComponent } from '../playlist-filter/playlist-filter';
 
 // angular material components
 import { MatExpansionModule } from '@angular/material/expansion';
-
 
 
 @Component({
@@ -20,7 +20,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     FooterComponent,
     BreadcrumbComponent,
     MatExpansionModule,
-    PlaylistGalleryComponent
+    PlaylistGalleryComponent,
+    PlaylistFilterComponent,
 ],
 })
 

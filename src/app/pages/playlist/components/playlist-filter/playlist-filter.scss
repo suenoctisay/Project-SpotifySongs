@@ -1,0 +1,14 @@
+:host{
+  .playlist-filters{
+    &_form{
+      &_fields{
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      &_field{
+        margin-right: 16px
+      }
+    }
+  }
+}
