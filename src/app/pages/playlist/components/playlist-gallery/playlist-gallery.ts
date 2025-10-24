@@ -1,11 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// angular material components
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+// angular material imports
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
-import { PlaylistMock } from './../../mock/playlist.mock';
+// app imports
+import { Playlist } from './../../interface/playlist.interface';
+import { Playlist_Data } from './../../mock/playlist.mock';
 import { AppService } from '../../../../core/services/app.service';
 
 
@@ -22,7 +24,7 @@ import { AppService } from '../../../../core/services/app.service';
 })
 
 export class PlaylistGalleryComponent {
-  playlist = PlaylistMock;
+  playlist: Playlist[] = Playlist_Data;
   filteredPlaylists = [...this.playlist];
 
   constructor(

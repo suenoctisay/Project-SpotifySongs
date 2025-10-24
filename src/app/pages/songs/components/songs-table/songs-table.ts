@@ -11,8 +11,8 @@ import { MatMenuModule } from '@angular/material/menu';
 
 // app imports
 import { SongsTable } from '../../interface/songs-table.interface';
-import { SongsModalCompoent } from '../songs-modal/songs-modal';
 import { Songs_Data } from '../../mock/songs-table.mock';
+import { SongsModalCompoent } from '../songs-modal/songs-modal';
 
 // services
 import { AppService } from '../../../../core/services/app.service';

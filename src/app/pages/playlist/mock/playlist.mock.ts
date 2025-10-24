@@ -1,4 +1,6 @@
-export const PlaylistMock = [
+import { Playlist } from "../interface/playlist.interface";
+
+export const Playlist_Data: Playlist[] = [
   // PLAYLIST 01
   {
     title: 'Altumn',

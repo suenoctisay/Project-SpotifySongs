@@ -43,6 +43,5 @@ export class PlaylistFilterComponent {
   search() {
     const saveValue = this.searchPlaylistForm.value;
     this.appService.getValue(saveValue);
-    console.log(saveValue);
   }
 }
