@@ -1,4 +1,5 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, Inject, inject, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // angular material imports
 import { MatButtonModule } from '@angular/material/button';
@@ -7,20 +8,28 @@ import {
   MatDialogContent,
   MatDialogTitle,
   MatDialogRef,
+  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Sort, MatSort, MatSortModule } from '@angular/material/sort';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 // app imports
 import { SongsTable } from '../../../songs/interface/songs-table.interface';
 import { Songs_Data } from '../../../songs/mock/songs-table.mock';
+
 
 @Component({
   selector: 'app-playlist-modal',
   templateUrl: './playlist-modal.html',
   styleUrl: './playlist-modal.scss',
   imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     MatButtonModule,
     MatDialogTitle,
     MatDialogContent,
@@ -28,11 +37,14 @@ import { Songs_Data } from '../../../songs/mock/songs-table.mock';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatInputModule,
   ],
 })
 
 export class PlaylistModalComponent {
   readonly dialogRef = inject(MatDialogRef<PlaylistModalComponent>);
+
+  isEditing: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -46,6 +58,12 @@ export class PlaylistModalComponent {
     'genre',
     'duration',
   ];
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public playlist: { title: string; isEditing: boolean },
+  ) {
+    this.isEditing = this.playlist.isEditing;
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

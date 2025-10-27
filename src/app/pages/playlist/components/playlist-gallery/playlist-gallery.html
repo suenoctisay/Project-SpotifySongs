@@ -24,8 +24,10 @@
       </ul>
     </mat-card-content>
     <mat-card-actions class="playlist-gallery_card_actions">
-      <button matButton (click)="openModal()">See</button>
-      <button matButton (click)="openModal()">Edit</button>
+      <button matButton (click)="seeSongs(playlist.title)">See</button>
+      <button matButton
+        (click)="editSongs(playlist.title); isEditing = true;"
+      >Edit</button>
     </mat-card-actions>
   </mat-card>
 

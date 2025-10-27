@@ -25,13 +25,14 @@ import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 })
 
 export class PlaylistGalleryComponent {
-  readonly dialog = inject(MatDialog);
-
   playlist: Playlist[] = Playlist_Data;
   filteredPlaylists = [...this.playlist];
 
+  isEditing: boolean = true;
+
   constructor(
     private appService: AppService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -53,13 +54,23 @@ export class PlaylistGalleryComponent {
     });
   }
 
-  openModal(): void {
+  seeSongs(playlistName: string) {
     const dialogRef = this.dialog.open(PlaylistModalComponent, {
       maxWidth: 'fit-content',
       minHeight: 'fit-content',
+      data: { title: playlistName },
     });
+  }
 
-    dialogRef.afterClosed().subscribe(result => { });
+  editSongs(playlistName: string) {
+    const dialogRef = this.dialog.open(PlaylistModalComponent, {
+      maxWidth: 'fit-content',
+      minHeight: 'fit-content',
+      data: {
+        title: playlistName,
+        isEditing: this.isEditing,
+      },
+    });
   }
 
 }
