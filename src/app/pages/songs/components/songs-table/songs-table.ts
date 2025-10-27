@@ -16,7 +16,7 @@ import { Songs_Data } from '../../mock/songs-table.mock';
 import { SongsModalCompoent } from '../songs-modal/songs-modal';
 
 // services
-import { FilterService } from '../../../shared/filter.service';
+import { FilterService } from '../../../shared/services/filter.service';
 
 
 @Component({

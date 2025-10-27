@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 
 // app imports
-import { FilterService } from './../../../shared/filter.service';
+import { FilterService } from '../../../shared/services/filter.service';
 import { Playlist } from './../../interface/playlist.interface';
 import { Playlist_Data } from './../../mock/playlist.mock';
 import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';

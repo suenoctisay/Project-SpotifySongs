@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 // services
-import { FilterService } from './../../../shared/filter.service';
+import { FilterService } from '../../../shared/services/filter.service';
 
 @Component({
   selector: 'app-songs-filters',
