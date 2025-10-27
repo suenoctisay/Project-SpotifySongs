@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 // app imports
 import { Playlist } from './../../interface/playlist.interface';
 import { Playlist_Data } from './../../mock/playlist.mock';
-import { AppService } from '../../../../core/services/app.service';
+import { AppService } from '../../../shared/filter.service';
 import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 
 @Component({

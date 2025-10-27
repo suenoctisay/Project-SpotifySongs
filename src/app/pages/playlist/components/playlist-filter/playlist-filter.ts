@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // services
-import { AppService } from '../../../../core/services/app.service';
+import { AppService } from '../../../shared/filter.service';
 
 @Component({
   selector: 'app-playlist-filter',
