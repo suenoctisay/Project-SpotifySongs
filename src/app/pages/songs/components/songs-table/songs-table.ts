@@ -1,4 +1,5 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // angular material imports
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -22,6 +23,7 @@ import { AppService } from '../../../../core/services/app.service';
   templateUrl: './songs-table.html',
   styleUrl: './songs-table.scss',
   imports: [
+    CommonModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,

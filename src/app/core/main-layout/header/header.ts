@@ -30,4 +30,8 @@ export class HeaderCompoenent {
     window.location.href = '/songs';
   }
 
+  redirectToPlaylist() {
+    window.location.href = '/playlist';
+  }
+
 }

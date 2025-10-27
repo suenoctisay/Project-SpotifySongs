@@ -1,7 +1,10 @@
 <div class="playlist-gallery">
 
   <!-- PLAYLISTS -->
-  <mat-card *ngFor="let playlist of filteredPlaylists" appearance="outlined" class="playlist-gallery_card">
+  <mat-card *ngFor="let playlist of filteredPlaylists"
+    appearance="outlined"
+    class="playlist-gallery_card"
+  >
     <mat-card-header class="playlist-gallery_card_header">
       <mat-card-title class="playlist-gallery_card_header_title">{{ playlist.title }}</mat-card-title>
       <mat-card-subtitle class="playlist-gallery_card_header_subtitle">
@@ -26,5 +29,4 @@
     </mat-card-actions>
   </mat-card>
 
-  <p *ngIf="filteredPlaylists.length === 0">No playlists found.</p>
 </div>

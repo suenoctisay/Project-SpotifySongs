@@ -16,7 +16,6 @@ import { Sort, MatSort, MatSortModule } from '@angular/material/sort';
 import { SongsTable } from '../../../songs/interface/songs-table.interface';
 import { Songs_Data } from '../../../songs/mock/songs-table.mock';
 
-
 @Component({
   selector: 'app-playlist-modal',
   templateUrl: './playlist-modal.html',
@@ -52,7 +51,6 @@ export class PlaylistModalComponent {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
 
   close(): void {
     this.dialogRef.close();
@@ -90,5 +88,5 @@ export class PlaylistModalComponent {
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean): number {
-return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

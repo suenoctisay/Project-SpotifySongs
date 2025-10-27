@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule }
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // services
 import { AppService } from '../../../../core/services/app.service';
@@ -18,12 +19,14 @@ import { AppService } from '../../../../core/services/app.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    // MatAutocompleteModule,
   ],
 })
 
 export class PlaylistFilterComponent {
   searchPlaylistForm = new FormGroup({
+    title: new FormControl(''),
     creator: new FormControl(''),
     genre: new FormControl(''),
   });
@@ -35,13 +38,16 @@ export class PlaylistFilterComponent {
 
   OnInit() {
     this.searchPlaylistForm = this.formBuilder.group({
+      title: [''],
       creator: [''],
       genre: [''],
     });
   }
 
-  search() {
+  search(): void {
     const saveValue = this.searchPlaylistForm.value;
+    console.log('Form Values:', this.searchPlaylistForm.value);
     this.appService.getValue(saveValue);
+    console.log('Search Values:', saveValue);
   }
 }
