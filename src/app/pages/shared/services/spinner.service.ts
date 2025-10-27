@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 
-export class SpinnerSevice {
+export class SpinnerService {
   private spinnerSubject = new BehaviorSubject<boolean>(false);
   spinner$ = this.spinnerSubject.asObservable();
 

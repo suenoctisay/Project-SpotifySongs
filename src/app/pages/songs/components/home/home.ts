@@ -10,8 +10,9 @@ import { SongsTableComponent } from '../songs-table/songs-table';
 // angular material components
 import { MatExpansionModule } from '@angular/material/expansion';
 
-// providers
+// providers & services
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 
 @Component({
@@ -33,5 +34,16 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 
 export class SongsHomeComponent {
 
+  constructor(
+      private spinnerService: SpinnerService,
+    ) { }
+
+    ngOnInit() {
+      this.spinnerService.show();
+
+      setTimeout(() => {
+        this.spinnerService.hide();
+      }, 3000);
+    }
 
 }

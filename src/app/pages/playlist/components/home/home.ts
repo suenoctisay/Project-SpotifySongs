@@ -10,6 +10,9 @@ import { PlaylistFilterComponent } from '../playlist-filter/playlist-filter';
 // angular material components
 import { MatExpansionModule } from '@angular/material/expansion';
 
+// services
+import { SpinnerService } from '../../../shared/services/spinner.service';
+
 
 @Component({
   selector: 'app-playlist-home',
@@ -19,10 +22,25 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HeaderCompoenent,
     FooterComponent,
     BreadcrumbComponent,
-    MatExpansionModule,
+
     PlaylistGalleryComponent,
     PlaylistFilterComponent,
-],
+
+    MatExpansionModule,
+  ],
 })
 
-export class PlaylistHomeComponent { }
+export class PlaylistHomeComponent {
+
+  constructor(
+    private spinnerService: SpinnerService
+  ) { }
+
+  ngOnInit() {
+    this.spinnerService.show();
+
+    setTimeout(() => {
+      this.spinnerService.hide();
+    }, 3000);
+  }
+}
