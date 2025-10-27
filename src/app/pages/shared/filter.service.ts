@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class AppService {
+export class FilterService {
   private filterValue$ = new BehaviorSubject<any>(''); // colocar $ no final para saber que é um observable
 
   constructor() { }
@@ -16,9 +16,5 @@ export class AppService {
 
   setValue(): Observable<any> {
     return this.filterValue$.asObservable();
-  }
-
-  onPageReload(): void {
-    localStorage.clear();
   }
 }

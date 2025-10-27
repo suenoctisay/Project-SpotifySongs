@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // angular material imports
@@ -16,7 +16,8 @@ import { Songs_Data } from '../../mock/songs-table.mock';
 import { SongsModalCompoent } from '../songs-modal/songs-modal';
 
 // services
-import { AppService } from '../../../shared/filter.service';
+import { FilterService } from '../../../shared/filter.service';
+
 
 @Component({
   selector: 'app-songs-table',
@@ -51,7 +52,7 @@ export class SongsTableComponent {
   ];
 
   constructor(
-    private appService: AppService
+    private filterService: FilterService
   ) {
     this.dataSource.data = this.dataSource.data.slice();
   }
@@ -103,7 +104,7 @@ export class SongsTableComponent {
 
   // FILTER FUNCTION
   getFilteredSongs(): void {
-    this.appService.setValue().subscribe((saveValue) => {
+    this.filterService.setValue().subscribe((saveValue) => {
       if (!saveValue) {
         this.dataSource = new MatTableDataSource<SongsTable>([...Songs_Data]);
         return;

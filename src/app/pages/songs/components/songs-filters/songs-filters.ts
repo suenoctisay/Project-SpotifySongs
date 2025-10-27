@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // angular material components
@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 // services
-import { AppService } from '../../../shared/filter.service';
+import { FilterService } from './../../../shared/filter.service';
 
 @Component({
   selector: 'app-songs-filters',
@@ -31,7 +31,7 @@ export class SongsFiltersComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private appService: AppService
+    private filterService: FilterService
   ) { }
 
   OnInit() {
@@ -44,6 +44,6 @@ export class SongsFiltersComponent {
 
   search() {
     const saveValue = this.searchSongsForm.value;
-    this.appService.getValue(saveValue);
+    this.filterService.getValue(saveValue);
   }
 }

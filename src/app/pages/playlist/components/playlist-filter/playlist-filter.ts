@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // services
-import { AppService } from '../../../shared/filter.service';
+import { FilterService } from '../../../shared/filter.service';
 
 @Component({
   selector: 'app-playlist-filter',
@@ -33,7 +33,7 @@ export class PlaylistFilterComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private appService: AppService
+    private filterService: FilterService
   ) { }
 
   OnInit() {
@@ -47,7 +47,7 @@ export class PlaylistFilterComponent {
   search(): void {
     const saveValue = this.searchPlaylistForm.value;
     console.log('Form Values:', this.searchPlaylistForm.value);
-    this.appService.getValue(saveValue);
+    this.filterService.getValue(saveValue);
     console.log('Search Values:', saveValue);
   }
 }

@@ -7,9 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 
 // app imports
+import { FilterService } from './../../../shared/filter.service';
 import { Playlist } from './../../interface/playlist.interface';
 import { Playlist_Data } from './../../mock/playlist.mock';
-import { AppService } from '../../../shared/filter.service';
 import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 
 @Component({
@@ -31,7 +31,7 @@ export class PlaylistGalleryComponent {
   isEditing: boolean = true;
 
   constructor(
-    private appService: AppService,
+    private filterService: FilterService,
     private dialog: MatDialog
   ) { }
 
@@ -40,7 +40,7 @@ export class PlaylistGalleryComponent {
   }
 
   getFilteredPlaylists(): void {
-    this.appService.setValue().subscribe((saveValue) => {
+    this.filterService.setValue().subscribe((saveValue) => {
       console.log('Received filter values:', saveValue);
       if (!saveValue || Object.values(saveValue).every((value) => !value)) {
         return;
