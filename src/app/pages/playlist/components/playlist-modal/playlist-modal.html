@@ -1,0 +1,91 @@
+<div class="playlist-modal">
+  <h2 mat-dialog-title class="playlist-modal_title"> PLAYLIST NAME </h2>
+
+  <mat-dialog-content>
+    <table mat-table class="playlist-modal_table"
+    [dataSource]="dataSource"
+    matSort (matSortChange)="sortSongs($event)">
+
+    <!-- Artist -->
+    <ng-container matColumnDef="artist">
+      <th class="playlist-modal_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Artist </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="playlist-modal_table_body" *matCellDef="let element"> {{element.artist}} </td>
+      }
+    </ng-container>
+
+    <!-- Song -->
+    <ng-container matColumnDef="song">
+      <th class="playlist-modal_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Song </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="playlist-modal_table_body" *matCellDef="let element"> {{element.song}} </td>
+      }
+    </ng-container>
+
+    <!-- Album -->
+    <ng-container matColumnDef="album">
+      <th class="playlist-modal_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Album </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="playlist-modal_table_body" *matCellDef="let element"> {{element.album}} </td>
+      }
+      </ng-container>
+
+    <!-- Year -->
+    <ng-container matColumnDef="year">
+      <th class="playlist-modal_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Year </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="playlist-modal_table_body" *matCellDef="let element"> {{element.year}} </td>
+      }
+      </ng-container>
+
+    <!-- Genre -->
+    <ng-container matColumnDef="genre">
+      <th class="playlist-modal_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Genre </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="playlist-modal_table_body" *matCellDef="let element"> {{element.genre}} </td>
+      }
+      </ng-container>
+
+    <!-- Duration -->
+    <ng-container matColumnDef="duration">
+      <th class="playlist-modal_table_header"
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef> Duration </th>
+      @for (dataSource of dataSource.data; track dataSource) {
+        <td mat-cell class="playlist-modal_table_body" *matCellDef="let element"> {{element.duration}} </td>
+      }
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator
+      [length]="dataSource.data.length || 0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page">
+    </mat-paginator>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button matButton (click)="close()">Cancel</button>
+    <button matButton cdkFocusInitial>OK</button>
+  </mat-dialog-actions>
+</div>

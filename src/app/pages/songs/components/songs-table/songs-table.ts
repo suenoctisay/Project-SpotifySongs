@@ -17,7 +17,6 @@ import { SongsModalCompoent } from '../songs-modal/songs-modal';
 // services
 import { AppService } from '../../../../core/services/app.service';
 
-
 @Component({
   selector: 'app-songs-table',
   templateUrl: './songs-table.html',

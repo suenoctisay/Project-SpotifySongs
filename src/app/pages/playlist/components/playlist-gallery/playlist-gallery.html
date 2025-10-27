@@ -21,9 +21,10 @@
       </ul>
     </mat-card-content>
     <mat-card-actions class="playlist-gallery_card_actions">
-      <button matButton>See</button>
-      <button matButton>Edit</button>
+      <button matButton (click)="openModal()">See</button>
+      <button matButton (click)="openModal()">Edit</button>
     </mat-card-actions>
   </mat-card>
 
+  <p *ngIf="filteredPlaylists.length === 0">No playlists found.</p>
 </div>
