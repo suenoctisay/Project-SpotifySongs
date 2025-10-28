@@ -28,4 +28,8 @@ export class HomeComponent {
   redirectToPlaylist() {
     window.location.href = '/playlist';
   }
+
+  redirectToArtits() {
+    window.location.href = '/artists';
+  }
 }

@@ -34,4 +34,7 @@ export class HeaderCompoenent {
     window.location.href = '/playlist';
   }
 
+  redirectToArtists() {
+    window.location.href = '/artists';
+  }
 }

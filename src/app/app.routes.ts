@@ -16,6 +16,10 @@ export const app_routes: Routes = [
     path: 'playlist',
     loadComponent: () => import('./pages/playlist/components/home/home').then(c => c.PlaylistHomeComponent),
   },
+  {
+    path: 'artists',
+    loadComponent: () => import('./pages/artists/components/home/home').then(c => c.ArtistsHomeCompoenent),
+  },
 
 
 
