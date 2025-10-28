@@ -13,13 +13,15 @@ import {
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Sort, MatSort, MatSortModule } from '@angular/material/sort';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 
 // app imports
 import { SongsTable } from '../../../songs/interface/songs-table.interface';
 import { Songs_Data } from '../../../songs/mock/songs-table.mock';
 
+// services
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-playlist-modal',
@@ -60,9 +62,18 @@ export class PlaylistModalComponent {
   ];
 
   constructor(
+    private spinnerService: SpinnerService,
     @Inject(MAT_DIALOG_DATA) public playlist: { title: string; isEditing: boolean },
   ) {
     this.isEditing = this.playlist.isEditing;
+  }
+
+  ngOnInit() {
+    this.spinnerService.show();
+
+    setTimeout(() => {
+      this.spinnerService.hide();
+    }, 3000);
   }
 
   ngAfterViewInit() {

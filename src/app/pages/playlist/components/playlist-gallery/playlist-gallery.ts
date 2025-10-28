@@ -1,3 +1,4 @@
+import { PlaylistFilterComponent } from './../playlist-filter/playlist-filter';
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -26,35 +27,44 @@ import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 
 export class PlaylistGalleryComponent {
   playlist: Playlist[] = Playlist_Data;
-  filteredPlaylists = [...this.playlist];
+  filteredPlaylist = [...this.playlist];
 
   isEditing: boolean = true;
 
   constructor(
     private filterService: FilterService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.getFilteredPlaylists();
+    this.getFilteredSongs();
   }
 
-  getFilteredPlaylists(): void {
+  // FILTER FUNCTION
+  getFilteredSongs(): void {
     this.filterService.setValue().subscribe((saveValue) => {
-      console.log('Received filter values:', saveValue);
-      if (!saveValue || Object.values(saveValue).every((value) => !value)) {
+      console.log('Filter Values:', saveValue);
+      if (!saveValue || (!saveValue.title && !saveValue.creator && !saveValue.genre)) {
+        this.filteredPlaylist = [...this.playlist];
+        console.log('No filter applied, showing all playlists.');
         return;
       }
 
-      this.filteredPlaylists = this.playlist.filter((playlist) => {
-        const searchTerm = (saveValue.title || '') + (saveValue.creator || '') + (saveValue.genre || '');
-        const combinedFields = playlist.title + playlist.creator + playlist.genre;
-        return combinedFields.toLowerCase().includes(searchTerm.toLowerCase());
+      this.filteredPlaylist = this.playlist.filter((playlist) => {
+        console.log('Filtered Playlist:', this.filteredPlaylist);
+        const titleMatch = saveValue.title ? playlist.title.toLowerCase().includes(saveValue.title.toLowerCase()) : true;
+        console.log('Title Match:', titleMatch);
+        const creatorMatch = saveValue.creator ? playlist.creator.toLowerCase().includes(saveValue.creator.toLowerCase()) : true;
+        console.log('Creator Match:', creatorMatch);
+        const genreMatch = saveValue.genre ? playlist.genre.toLowerCase().includes(saveValue.genre.toLowerCase()) : true;
+        console.log('Genre Match:', genreMatch);
+        return titleMatch && creatorMatch && genreMatch;
       });
     });
   }
 
-  seeSongs(playlistName: string) {
+  // OPEN MODAL - SEE | EDIT
+  seePlaylist(playlistName: string) {
     const dialogRef = this.dialog.open(PlaylistModalComponent, {
       maxWidth: 'fit-content',
       minHeight: 'fit-content',
@@ -62,7 +72,7 @@ export class PlaylistGalleryComponent {
     });
   }
 
-  editSongs(playlistName: string) {
+  editPlaylist(playlistName: string) {
     const dialogRef = this.dialog.open(PlaylistModalComponent, {
       maxWidth: 'fit-content',
       minHeight: 'fit-content',

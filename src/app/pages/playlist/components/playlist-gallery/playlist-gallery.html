@@ -1,7 +1,7 @@
 <div class="playlist-gallery">
 
   <!-- PLAYLISTS -->
-  <mat-card *ngFor="let playlist of filteredPlaylists"
+  <mat-card *ngFor="let playlist of filteredPlaylist"
     appearance="outlined"
     class="playlist-gallery_card"
   >
@@ -24,9 +24,9 @@
       </ul>
     </mat-card-content>
     <mat-card-actions class="playlist-gallery_card_actions">
-      <button matButton (click)="seeSongs(playlist.title)">See</button>
+      <button matButton (click)="seePlaylist(playlist.title)">See</button>
       <button matButton
-        (click)="editSongs(playlist.title); isEditing = true;"
+        (click)="editPlaylist(playlist.title); isEditing = true;"
       >Edit</button>
     </mat-card-actions>
   </mat-card>

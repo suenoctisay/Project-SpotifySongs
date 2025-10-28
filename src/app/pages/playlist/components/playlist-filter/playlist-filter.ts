@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // angular material components
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+// import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // services
 import { FilterService } from '../../../shared/services/filter.service';
@@ -44,10 +44,10 @@ export class PlaylistFilterComponent {
     });
   }
 
-  search(): void {
+  search() {
     const saveValue = this.searchPlaylistForm.value;
-    console.log('Form Values:', this.searchPlaylistForm.value);
     this.filterService.getValue(saveValue);
     console.log('Search Values:', saveValue);
   }
+
 }

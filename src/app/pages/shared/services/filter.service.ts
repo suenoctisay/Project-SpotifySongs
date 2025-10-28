@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export class FilterService {
   private filterValue$ = new BehaviorSubject<any>(''); // colocar $ no final para saber que é um observable
+  searchTerm$ = this.filterValue$.asObservable();
 
   constructor() { }
 
@@ -15,6 +16,7 @@ export class FilterService {
   }
 
   setValue(): Observable<any> {
-    return this.filterValue$.asObservable();
+    return this.searchTerm$;
   }
+
 }
