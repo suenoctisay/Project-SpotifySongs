@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {  Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // angular material imports
@@ -19,11 +19,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogContent,
     MatDialogActions,
     MatInputModule,
-    MatButtonModule,
+    MatButtonModule
   ],
 })
 
-export class SongsModalCompoent {
+export class SongsModalCompoent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<SongsModalCompoent>);
 
   addNewSongForm = new FormGroup({
@@ -39,15 +39,20 @@ export class SongsModalCompoent {
     private formBuilder: FormBuilder,
   ) { }
 
-  OnInit() {
-    this.addNewSongForm = this.formBuilder.group({
-      artist: [''],
-      song: [''],
-      album: [''],
-      year: [''],
-      genre: [''],
-      duration: ['']
-    });
+  ngOnInit() {
+    var data = this.dialogRef._containerInstance._config.data
+    if(data == null){
+      this.addNewSongForm = this.formBuilder.group({
+            artist: new FormControl (''),
+            song: new FormControl (''),
+            album: new FormControl (''),
+            year: new FormControl (''),
+            genre: new FormControl (''),
+            duration: new FormControl ('')
+          });
+    } else {
+      this.openModal(data)
+    }
   }
 
   close(): void {
@@ -57,5 +62,14 @@ export class SongsModalCompoent {
   save(): void {
     const newSong = this.addNewSongForm.value;
     this.dialogRef.close(newSong);
+  }
+
+  async openModal(song: any){
+    this.addNewSongForm.get('artist')?.setValue(song.artist)
+    this.addNewSongForm.get('song')?.setValue(song.song)
+    this.addNewSongForm.get('album')?.setValue(song.album)
+    this.addNewSongForm.get('year')?.setValue(song.year)
+    this.addNewSongForm.get('genre')?.setValue(song.genre)
+    this.addNewSongForm.get('duration')?.setValue(song.duration)
   }
 }
