@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { HeaderCompoenent } from '../../../../core/main-layout/header/header';
 import { FooterComponent } from '../../../../core/main-layout/footer/footer';
 import { BreadcrumbComponent } from '../../../../core/main-layout/breadcrumb/breadcrumb';
-import { SongsFiltersComponent } from "../songs-filters/songs-filters";
+import { SongsFilterComponent } from "../songs-filter/songs-filter";
 import { SongsTableComponent } from '../songs-table/songs-table';
 
 // angular material components
@@ -25,7 +25,7 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
     FooterComponent,
     BreadcrumbComponent,
 
-    SongsFiltersComponent,
+    SongsFilterComponent,
     SongsTableComponent,
 
     MatExpansionModule

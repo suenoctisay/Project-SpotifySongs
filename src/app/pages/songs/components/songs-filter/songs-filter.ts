@@ -10,9 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FilterService } from '../../../shared/services/filter.service';
 
 @Component({
-  selector: 'app-songs-filters',
-  templateUrl: './songs-filters.html',
-  styleUrl: './songs-filters.scss',
+  selector: 'app-songs-filter',
+  templateUrl: './songs-filter.html',
+  styleUrl: './songs-filter.scss',
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -22,7 +22,7 @@ import { FilterService } from '../../../shared/services/filter.service';
   ],
 })
 
-export class SongsFiltersComponent {
+export class SongsFilterComponent {
   searchSongsForm = new FormGroup({
     artist: new FormControl(''),
     song: new FormControl(''),
