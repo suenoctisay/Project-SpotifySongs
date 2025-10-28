@@ -114,6 +114,7 @@ export class SongsTableComponent {
         const combinedFields = song.artist + song.song + song.album;
         return combinedFields.toLowerCase().includes(searchTerm.toLowerCase());
       }));
+      this.dataSource.paginator = this.paginator
     });
   }
 
