@@ -20,9 +20,6 @@ import { MatInputModule } from '@angular/material/input';
 import { SongsTable } from '../../../songs/interface/songs-table.interface';
 import { Songs_Data } from '../../../songs/mock/songs-table.mock';
 
-// services
-import { SpinnerService } from '../../../shared/services/spinner.service';
-
 @Component({
   selector: 'app-playlist-modal',
   templateUrl: './playlist-modal.html',
@@ -62,19 +59,12 @@ export class PlaylistModalComponent {
   ];
 
   constructor(
-    private spinnerService: SpinnerService,
     @Inject(MAT_DIALOG_DATA) public playlist: { title: string; isEditing: boolean },
   ) {
     this.isEditing = this.playlist.isEditing;
   }
 
-  ngOnInit() {
-    this.spinnerService.show();
-
-    setTimeout(() => {
-      this.spinnerService.hide();
-    }, 3000);
-  }
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
