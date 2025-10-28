@@ -1,29 +1,31 @@
 <div class="playlist-gallery">
 
   <!-- PLAYLISTS -->
-  <mat-card *ngFor="let playlist of filteredPlaylists" appearance="outlined" class="playlist-gallery_card">
-    <mat-card-header class="playlist-gallery_card_header">
-      <mat-card-title class="playlist-gallery_card_header_title">{{ playlist.title }}</mat-card-title>
-      <mat-card-subtitle class="playlist-gallery_card_header_subtitle">
-        <p class="playlist-gallery_card_header_subtitle_text">
-          {{ playlist.description }}
-        </p>
-      </mat-card-subtitle>
-    </mat-card-header>
-    <div class="playlist-gallery_card_img-container">
-      <img mat-card-image class="playlist-gallery_card_img-container_img" [src]="playlist.image" alt="Cover Photo">
-    </div>
-    <mat-card-content class="playlist-gallery_card_content">
-      <ul class="playlist-gallery_card_content_list">
-        <li class="playlist-gallery_card_content_list_item">Creator: {{ playlist.creator }}</li>
-        <li class="playlist-gallery_card_content_list_item">Songs: {{ playlist.songs }}</li>
-        <li class="playlist-gallery_card_content_list_item">Genre: {{ playlist.genre }}</li>
-      </ul>
-    </mat-card-content>
-    <mat-card-actions class="playlist-gallery_card_actions">
-      <button matButton>See</button>
-      <button matButton>Edit</button>
-    </mat-card-actions>
-  </mat-card>
+   @for (playlist of filteredPlaylists$ | async; track $index) {
+     <mat-card appearance="outlined" class="playlist-gallery_card">
+       <mat-card-header class="playlist-gallery_card_header">
+         <mat-card-title class="playlist-gallery_card_header_title">{{ playlist.title }}</mat-card-title>
+         <mat-card-subtitle class="playlist-gallery_card_header_subtitle">
+           <p class="playlist-gallery_card_header_subtitle_text">
+             {{ playlist.description }}
+           </p>
+         </mat-card-subtitle>
+       </mat-card-header>
+       <div class="playlist-gallery_card_img-container">
+         <img mat-card-image class="playlist-gallery_card_img-container_img" [src]="playlist.image" alt="Cover Photo">
+       </div>
+       <mat-card-content class="playlist-gallery_card_content">
+         <ul class="playlist-gallery_card_content_list">
+           <li class="playlist-gallery_card_content_list_item">Creator: {{ playlist.creator }}</li>
+           <li class="playlist-gallery_card_content_list_item">Songs: {{ playlist.songs }}</li>
+           <li class="playlist-gallery_card_content_list_item">Genre: {{ playlist.genre }}</li>
+         </ul>
+       </mat-card-content>
+       <mat-card-actions class="playlist-gallery_card_actions">
+         <button matButton>See</button>
+         <button matButton>Edit</button>
+       </mat-card-actions>
+     </mat-card>
+   }
 
 </div>

@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Playlist } from './../../interface/playlist.interface';
 import { Playlist_Data } from './../../mock/playlist.mock';
 import { AppService } from '../../../../core/services/app.service';
+import { map, Observable, startWith } from 'rxjs';
 
 
 @Component({
@@ -25,29 +26,38 @@ import { AppService } from '../../../../core/services/app.service';
 
 export class PlaylistGalleryComponent {
   playlist: Playlist[] = Playlist_Data;
-  filteredPlaylists = [...this.playlist];
+  filteredPlaylists$!: Observable<Playlist[]>;
 
   constructor(
     private appService: AppService
   ) { }
 
   ngOnInit(): void {
-    this.getFilteredPlaylists();
-  }
+    this.filteredPlaylists$ = this.appService.setValue().pipe(
+      startWith({ creator: '', genre: '' }), 
+      map((saveValue) => {
+        const searchCreator = (saveValue.creator || '').toLowerCase().trim();
+        const searchGenre = (saveValue.genre || '').toLowerCase().trim();
 
-  getFilteredPlaylists(): void {
-    this.appService.setValue().subscribe((saveValue) => {
-      if (!saveValue) {
-        this.filteredPlaylists = [...this.playlist];
-        return;
-      }
+        if (!searchCreator && !searchGenre) {
+          
+        }
+        return this.playlist.filter((playlist) => {
+          const playlistCreator = (playlist.creator || '').toLowerCase();
+          const playlistGenre = (playlist.genre || '').toLowerCase();
 
-      this.filteredPlaylists = this.playlist.filter((playlist) => {
-        const searchTerm = (saveValue.creator || '') + (saveValue.genre || '');
-        const combinedFields = playlist.creator + playlist.genre;
-        return combinedFields.toLowerCase().includes(searchTerm.toLowerCase());
-      });
-    });
+          const creatorMatch = searchCreator
+            ? playlistCreator.includes(searchCreator)
+            : true;
+
+          const genreMatch = searchGenre
+            ? playlistGenre.includes(searchGenre)
+            : true;
+
+          return creatorMatch && genreMatch;
+        });
+      })
+    );
   }
 
 }
