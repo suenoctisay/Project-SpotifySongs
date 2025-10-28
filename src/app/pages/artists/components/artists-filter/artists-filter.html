@@ -1,0 +1,21 @@
+<div class="artists-filters">
+  <form class="artists-filters_form"
+    [formGroup]="searchArtistForm"
+  >
+
+    <div class="artists-filters_form_fields">
+      <!-- artist -->
+      <mat-form-field class="artists-filters_form_field">
+        <mat-label>Artist</mat-label>
+        <input (input)="filterByArtist($event)"
+          placeholder="Ex: Justin Bieber" matInput formControlName="artist" />
+      </mat-form-field>
+
+      <div class="artists-filters_form_actions">
+        <button matButton type="submit">Search</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+

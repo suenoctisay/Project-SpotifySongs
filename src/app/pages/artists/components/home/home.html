@@ -1,18 +1,19 @@
 <app-header></app-header>
 <app-breadcrumb></app-breadcrumb>
 
-<div class="playlist-page">
+<div class="artists-page">
 
   <!-- PLAYLIST GALLERY -->
-  <div class="playlist-page_accordion">
+  <div class="artists-page_accordion">
     <mat-accordion multi>
-      <mat-expansion-panel expanded="true" class="playlist-page_accordion_expansion-panel">
-        <mat-expansion-panel-header class="playlist-page_accordion_expansion-panel_header">
-          <mat-panel-title class="playlist-page_accordion_expansion-panel_header_title">
-            My Playlists
+      <mat-expansion-panel expanded="true" class="artists-page_accordion_expansion-panel">
+        <mat-expansion-panel-header class="artists-page_accordion_expansion-panel_header">
+          <mat-panel-title class="artists-page_accordion_expansion-panel_header_title">
+            My Artists
           </mat-panel-title>
         </mat-expansion-panel-header>
-
+        <app-artists-filter (search)="onArtistFilterValues($event)"></app-artists-filter>
+        <app-artists-gallery [searchedArtirst]="artistFilterValues"></app-artists-gallery>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

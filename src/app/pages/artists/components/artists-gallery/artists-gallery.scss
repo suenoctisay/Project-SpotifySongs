@@ -1,0 +1,53 @@
+:host{
+  .artists-gallery{
+    padding: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    &_card{
+      border: none;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      &:hover{
+        transform: translateY(-4px);
+        transition: all 0.3s ease;
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+      }
+      &_header{
+        &_title{
+          font-size: var(--small);
+          font-weight: var(--bold);
+          color: var(--green-darkest);
+          text-transform: uppercase;
+          text-align: center;
+          margin: 0;
+        }
+        &_subtitle{
+          font-size: var(--smaller);
+          color: var(--neutral-7);
+          margin: 8px 0;
+          &_text{
+            line-height: 14px;
+            text-align: justify;
+          }
+        }
+      }
+      &_content{
+        height: -webkit-fill-available;
+        &_list{
+          padding: 0;
+          margin: 0;
+          &_item{
+            font-size: var(--smaller);
+            color: var(--neutral-7);
+            list-style: none;
+          }
+        }
+      }
+      &_actions{
+        justify-content: flex-end
+      }
+    }
+  }
+
+}
