@@ -1,27 +1,28 @@
 <div class="playlist-filters">
   <form class="playlist-filters_form"
     [formGroup]="searchPlaylistForm"
+    (ngSubmit)="search()"
   >
 
     <div class="playlist-filters_form_fields">
       <!-- title -->
       <mat-form-field class="playlist-filters_form_field">
         <mat-label>Title</mat-label>
-        <input (input)="filterByTitle($event)"
+        <input
           placeholder="Ex: Songs to Travel" matInput formControlName="title" />
       </mat-form-field>
 
       <!-- creator -->
       <mat-form-field class="playlist-filters_form_field">
         <mat-label>Creator</mat-label>
-        <input (input)="filterByCreator($event)"
+        <input
           placeholder="Ex: suenoctisay" matInput formControlName="creator" />
       </mat-form-field>
 
       <!-- genre -->
       <mat-form-field class="playlist-filters_form_field">
         <mat-label>Genre</mat-label>
-        <input (input)="filterByGenre($event)"
+        <input
           placeholder="Ex: Alternative" matInput formControlName="genre" />
       </mat-form-field>
 

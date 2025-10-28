@@ -104,7 +104,7 @@ export class SongsTableComponent {
 
   // FILTER FUNCTION
   getFilteredSongs(): void {
-    this.filterService.getValueSong().subscribe((saveValue) => {
+    this.filterService.getValue().subscribe((saveValue) => {
       if (!saveValue) {
         this.dataSource = new MatTableDataSource<SongsTable>([...Songs_Data]);
         return;

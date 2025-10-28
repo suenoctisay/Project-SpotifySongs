@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { map, Observable, startWith } from 'rxjs';
 
 // angular material imports
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +11,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 import { Playlist } from './../../interface/playlist.interface';
 import { Playlist_Data } from './../../mock/playlist.mock';
+
+// services
+import { FilterService } from './../../../shared/services/filter.service';
+
 
 @Component({
   selector: 'app-playlist-gallery',
@@ -24,23 +29,14 @@ import { Playlist_Data } from './../../mock/playlist.mock';
 })
 
 export class PlaylistGalleryComponent {
-  @Input() searchedPlaylist: {
-    title: string;
-    creator: string;
-    genre: string
-  } = {
-    title: '',
-    creator: '',
-    genre: '',
-  };
-
   playlist: Playlist[] = Playlist_Data;
-  filteredPlaylist = [...this.playlist];
+  filteredPlaylists$!: Observable<Playlist[]>
 
   isEditing: boolean = true;
 
   constructor(
     private dialog: MatDialog,
+    private filterService: FilterService,
   ) { }
 
   ngOnInit(): void { }
@@ -51,19 +47,38 @@ export class PlaylistGalleryComponent {
 
   // FILTER FUNCTION
   applyFilters(): void {
-    this.filteredPlaylist = this.playlist.filter((playlist) => {
-      const titleMatch = this.searchedPlaylist.title
-        ? playlist.title.toLowerCase().includes(this.searchedPlaylist.title.toLowerCase())
-        : true;
-      const creatorMatch = this.searchedPlaylist.creator
-        ? playlist.creator.toLowerCase().includes(this.searchedPlaylist.creator.toLowerCase())
-        : true;
-      const genreMatch = this.searchedPlaylist.genre
-        ? playlist.genre.toLowerCase().includes(this.searchedPlaylist.genre.toLowerCase())
-        : true;
+    this.filteredPlaylists$ = this.filterService.getValue().pipe(
+      startWith({ title: '', creator: '', genre: '' }),
+      map((saveValue) => {
+        const searchTitle = (saveValue.title || '').toLowerCase().trim();
+        const searchCreator = (saveValue.creator || '').toLowerCase().trim();
+        const searchGenre = (saveValue.genre || '').toLowerCase().trim();
 
-      return titleMatch && creatorMatch && genreMatch;
-    });
+        // if (!searchCreator && !searchGenre && !searchTitle) {
+        //   return this.playlist;
+        // }
+
+        return this.playlist.filter((playlist) => {
+          const playlistTitle = (playlist.title || '').toLowerCase();
+          const playlistCreator = (playlist.creator || '').toLowerCase();
+          const playlistGenre = (playlist.genre || '').toLowerCase();
+
+          const titleMatch = searchTitle
+            ? playlistTitle.includes(searchTitle)
+            : true;
+
+          const creatorMatch = searchCreator
+            ? playlistCreator.includes(searchCreator)
+            : true;
+
+          const genreMatch = searchGenre
+            ? playlistGenre.includes(searchGenre)
+            : true;
+
+          return titleMatch && creatorMatch && genreMatch ;
+        });
+      })
+    );
   }
 
   // OPEN MODAL - SEE | EDIT
@@ -85,5 +100,4 @@ export class PlaylistGalleryComponent {
       },
     });
   }
-
 }

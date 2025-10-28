@@ -44,6 +44,6 @@ export class SongsFilterComponent {
 
   search() {
     const saveValue = this.searchSongsForm.value;
-    this.filterService.setValueSong(saveValue);
+    this.filterService.setValue(saveValue);
   }
 }

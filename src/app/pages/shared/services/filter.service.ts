@@ -8,26 +8,17 @@ import { Playlist } from '../../playlist/interface/playlist.interface';
 })
 
 export class FilterService {
-  private filterSongs$ = new BehaviorSubject<any>(''); // colocar $ no final para saber que é um observable
+  private filterSongs$ = new BehaviorSubject<any>('');
   searchTerm$ = this.filterSongs$.asObservable();
-
-  // private filterPlaylists$ = new BehaviorSubject<Partial<Playlist>>({});
 
   constructor() { }
 
-  // SONGS FILTER
-  setValueSong(value: any) {
+  // FILTER FUNCTION
+  setValue(value: any) {
     this.filterSongs$.next(value);
   }
-  getValueSong(): Observable<any> {
+  getValue(): Observable<any> {
     return this.searchTerm$;
   }
 
-  // PLAYLIST FILTER
-  // setValuePlaylist(playlist: Partial<Playlist>): void {
-  //   this.filterPlaylists$.next(playlist);
-  // }
-  // getValuePlaylist(): Observable<Partial<Playlist>> {
-  //   return this.filterPlaylists$.asObservable();
-  // }
 }
