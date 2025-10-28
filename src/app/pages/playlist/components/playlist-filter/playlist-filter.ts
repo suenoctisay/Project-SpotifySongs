@@ -44,6 +44,4 @@ export class PlaylistFilterComponent {
     const saveValue = this.searchPlaylistForm.value;
     this.FilterService.setValue(saveValue);
   }
-
-
 }

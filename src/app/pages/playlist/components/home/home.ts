@@ -31,12 +31,6 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 })
 
 export class PlaylistHomeComponent {
-  playlistFilterValues = {
-    title: '',
-    creator: '',
-    genre: '',
-  };
-
   constructor(
     private spinnerService: SpinnerService
   ) { }
@@ -47,14 +41,6 @@ export class PlaylistHomeComponent {
     setTimeout(() => {
       this.spinnerService.hide();
     }, 3000);
-  }
-
-  onPlaylistFilterValues(saveValue: {
-    title: string;
-    creator: string;
-    genre: string
-  }): void {
-    this.playlistFilterValues = saveValue;
   }
 
 }

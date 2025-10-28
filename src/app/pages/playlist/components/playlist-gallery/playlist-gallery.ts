@@ -39,11 +39,9 @@ export class PlaylistGalleryComponent {
     private filterService: FilterService,
   ) { }
 
-  ngOnInit(): void { }
-
-  ngOnChanges(): void {
+  ngOnInit(): void {
     this.applyFilters();
-  }
+   }
 
   // FILTER FUNCTION
   applyFilters(): void {
@@ -54,9 +52,9 @@ export class PlaylistGalleryComponent {
         const searchCreator = (saveValue.creator || '').toLowerCase().trim();
         const searchGenre = (saveValue.genre || '').toLowerCase().trim();
 
-        // if (!searchCreator && !searchGenre && !searchTitle) {
-        //   return this.playlist;
-        // }
+        if (!searchCreator && !searchGenre && !searchTitle) {
+          return this.playlist;
+        }
 
         return this.playlist.filter((playlist) => {
           const playlistTitle = (playlist.title || '').toLowerCase();
