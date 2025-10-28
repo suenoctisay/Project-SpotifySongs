@@ -10,9 +10,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 import { Playlist } from './../../interface/playlist.interface';
 import { Playlist_Data } from './../../mock/playlist.mock';
-import { PlaylistFilterComponent } from '../playlist-filter/playlist-filter';
-import { BehaviorSubject, debounceTime } from 'rxjs';
-
 
 @Component({
   selector: 'app-playlist-gallery',
@@ -55,7 +52,6 @@ export class PlaylistGalleryComponent {
   // FILTER FUNCTION
   applyFilters(): void {
     this.filteredPlaylist = this.playlist.filter((playlist) => {
-      // console.log('Applying filters with searchedPlaylist:', this.searchedPlaylist);
       const titleMatch = this.searchedPlaylist.title
         ? playlist.title.toLowerCase().includes(this.searchedPlaylist.title.toLowerCase())
         : true;
