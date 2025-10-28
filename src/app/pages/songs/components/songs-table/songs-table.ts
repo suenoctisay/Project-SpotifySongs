@@ -145,6 +145,7 @@ export class SongsTableComponent {
           return 0;
       }
     }));
+    this.dataSource.paginator = this.paginator
   }
 
 }

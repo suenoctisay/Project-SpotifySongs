@@ -20,11 +20,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogActions,
     MatInputModule,
     MatButtonModule
-],
+  ],
 })
 
 export class SongsModalCompoent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<SongsModalCompoent>);
+
   addNewSongForm = new FormGroup({
     artist: new FormControl(''),
     song: new FormControl(''),
@@ -39,7 +40,6 @@ export class SongsModalCompoent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
     var data = this.dialogRef._containerInstance._config.data
     if(data == null){
       this.addNewSongForm = this.formBuilder.group({
@@ -50,7 +50,7 @@ export class SongsModalCompoent implements OnInit {
             genre: new FormControl (''),
             duration: new FormControl ('')
           });
-    }else{
+    } else {
       this.openModal(data)
     }
   }
