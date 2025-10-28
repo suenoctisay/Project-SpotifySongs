@@ -111,9 +111,17 @@ export class SongsTableComponent {
       }
 
       this.dataSource = new MatTableDataSource<SongsTable>(Songs_Data.filter((song) => {
-        const searchTerm = (saveValue.artist || '') + (saveValue.song || '') + (saveValue.album || '');
-        const combinedFields = song.artist + song.song + song.album;
-        return combinedFields.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesArtist = saveValue.artist
+          ? song.artist.toLowerCase().includes(saveValue.artist.toLowerCase())
+          : true;
+        const matchesSong = saveValue.song
+          ? song.song.toLowerCase().includes(saveValue.song.toLowerCase())
+          : true;
+        const matchesAlbum = saveValue.album
+          ? song.album.toLowerCase().includes(saveValue.album.toLowerCase())
+          : true;
+
+        return matchesArtist && matchesSong && matchesAlbum;
       }));
       this.dataSource.paginator = this.paginator
     });

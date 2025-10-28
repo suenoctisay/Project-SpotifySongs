@@ -1,4 +1,5 @@
 <div class="playlist-gallery">
+
   <!-- PLAYLISTS -->
   <mat-card *ngFor="let playlist of filteredPlaylist"
     appearance="outlined"
@@ -29,5 +30,10 @@
       >Edit</button>
     </mat-card-actions>
   </mat-card>
+
+  <!-- NO PLAYLIST FOUND -->
+  @if (filteredPlaylist.length === 0) {
+    <p>No Playlist found.</p>
+  }
 
 </div>
