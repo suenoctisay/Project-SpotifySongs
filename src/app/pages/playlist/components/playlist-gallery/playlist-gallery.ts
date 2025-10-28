@@ -1,5 +1,4 @@
-import { PlaylistFilterComponent } from './../playlist-filter/playlist-filter';
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // angular material imports
@@ -8,10 +7,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 
 // app imports
-import { FilterService } from '../../../shared/services/filter.service';
+import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 import { Playlist } from './../../interface/playlist.interface';
 import { Playlist_Data } from './../../mock/playlist.mock';
-import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
+import { PlaylistFilterComponent } from '../playlist-filter/playlist-filter';
+import { BehaviorSubject, debounceTime } from 'rxjs';
+
 
 @Component({
   selector: 'app-playlist-gallery',
@@ -26,40 +27,46 @@ import { PlaylistModalComponent } from '../playlist-modal/playlist-modal';
 })
 
 export class PlaylistGalleryComponent {
+  @Input() searchedPlaylist: {
+    title: string;
+    creator: string;
+    genre: string
+  } = {
+    title: '',
+    creator: '',
+    genre: '',
+  };
+
   playlist: Playlist[] = Playlist_Data;
   filteredPlaylist = [...this.playlist];
 
   isEditing: boolean = true;
 
   constructor(
-    private filterService: FilterService,
     private dialog: MatDialog,
   ) { }
 
-  ngOnInit(): void {
-    this.getFilteredSongs();
+  ngOnInit(): void { }
+
+  ngOnChanges(): void {
+    this.applyFilters();
   }
 
   // FILTER FUNCTION
-  getFilteredSongs(): void {
-    this.filterService.setValue().subscribe((saveValue) => {
-      console.log('Filter Values:', saveValue);
-      if (!saveValue || (!saveValue.title && !saveValue.creator && !saveValue.genre)) {
-        this.filteredPlaylist = [...this.playlist];
-        console.log('No filter applied, showing all playlists.');
-        return;
-      }
+  applyFilters(): void {
+    this.filteredPlaylist = this.playlist.filter((playlist) => {
+      // console.log('Applying filters with searchedPlaylist:', this.searchedPlaylist);
+      const titleMatch = this.searchedPlaylist.title
+        ? playlist.title.toLowerCase().includes(this.searchedPlaylist.title.toLowerCase())
+        : true;
+      const creatorMatch = this.searchedPlaylist.creator
+        ? playlist.creator.toLowerCase().includes(this.searchedPlaylist.creator.toLowerCase())
+        : true;
+      const genreMatch = this.searchedPlaylist.genre
+        ? playlist.genre.toLowerCase().includes(this.searchedPlaylist.genre.toLowerCase())
+        : true;
 
-      this.filteredPlaylist = this.playlist.filter((playlist) => {
-        console.log('Filtered Playlist:', this.filteredPlaylist);
-        const titleMatch = saveValue.title ? playlist.title.toLowerCase().includes(saveValue.title.toLowerCase()) : true;
-        console.log('Title Match:', titleMatch);
-        const creatorMatch = saveValue.creator ? playlist.creator.toLowerCase().includes(saveValue.creator.toLowerCase()) : true;
-        console.log('Creator Match:', creatorMatch);
-        const genreMatch = saveValue.genre ? playlist.genre.toLowerCase().includes(saveValue.genre.toLowerCase()) : true;
-        console.log('Genre Match:', genreMatch);
-        return titleMatch && creatorMatch && genreMatch;
-      });
+      return titleMatch && creatorMatch && genreMatch;
     });
   }
 

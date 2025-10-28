@@ -12,8 +12,8 @@
             My Playlists
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <app-playlist-filter></app-playlist-filter>
-        <app-playlist-gallery></app-playlist-gallery>
+        <app-playlist-filter (search)="onPlaylistFilterValues($event)"></app-playlist-filter>
+        <app-playlist-gallery [searchedPlaylist]="playlistFilterValues"></app-playlist-gallery>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

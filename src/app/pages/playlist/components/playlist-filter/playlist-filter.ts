@@ -7,9 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 // import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-// services
-import { FilterService } from '../../../shared/services/filter.service';
-
 @Component({
   selector: 'app-playlist-filter',
   templateUrl: './playlist-filter.html',
@@ -25,6 +22,12 @@ import { FilterService } from '../../../shared/services/filter.service';
 })
 
 export class PlaylistFilterComponent {
+  @Output() search = new EventEmitter<{
+    title: string;
+    creator: string;
+    genre: string
+  }>();
+
   searchPlaylistForm = new FormGroup({
     title: new FormControl(''),
     creator: new FormControl(''),
@@ -33,7 +36,6 @@ export class PlaylistFilterComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private filterService: FilterService
   ) { }
 
   OnInit() {
@@ -44,10 +46,32 @@ export class PlaylistFilterComponent {
     });
   }
 
-  search() {
-    const saveValue = this.searchPlaylistForm.value;
-    this.filterService.getValue(saveValue);
-    console.log('Search Values:', saveValue);
+  filterByTitle(event: Event): void {
+    const title = (event.target as HTMLInputElement).value;
+    this.onSearch({ title });
+  }
+
+  filterByCreator(event: Event): void {
+    const creator = (event.target as HTMLInputElement).value;
+    this.onSearch({ creator });
+  }
+
+  filterByGenre(event: Event): void {
+    const genre = (event.target as HTMLInputElement).value;
+    this.onSearch({ genre });
+  }
+
+  onSearch(updatedFilter: Partial<{
+    title: string;
+    creator: string;
+    genre: string;
+  }>) {
+    const currentFilters = {
+      title: this.searchPlaylistForm.value.title || '',
+      creator: this.searchPlaylistForm.value.creator || '',
+      genre: this.searchPlaylistForm.value.genre || '',
+    };
+    this.search.emit({ ...currentFilters, ...updatedFilter });
   }
 
 }
