@@ -29,7 +29,7 @@ export class PlaylistFilterComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private FilterService: FilterService,
+    private filterService: FilterService,
   ) { }
 
   OnInit() {
@@ -42,6 +42,6 @@ export class PlaylistFilterComponent {
 
   search() {
     const saveValue = this.searchPlaylistForm.value;
-    this.FilterService.setValue(saveValue);
+    this.filterService.setValue(saveValue);
   }
 }
