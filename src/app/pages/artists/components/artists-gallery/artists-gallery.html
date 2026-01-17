@@ -1,32 +1,30 @@
 <div class="artists-gallery">
 
   <!-- PLAYLISTS -->
-  <mat-card
-    *ngFor="let artist of filteredArtist"
-    appearance="outlined"
-    class="artists-gallery_card"
-  >
-    <mat-card-header class="artists-gallery_card_header">
-      <mat-card-title class="artists-gallery_card_header_title">{{ artist.name }}</mat-card-title>
-      <mat-card-subtitle class="artists-gallery_card_header_subtitle">
-        <p class="artists-gallery_card_header_subtitle_text">
-          {{ artist.description }}
-        </p>
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class="artists-gallery_card_content">
-      <ul class="artists-gallery_card_content_list">
-        <li class="artists-gallery_card_content_list_item">Birth Date: {{ artist.bith_date | date: 'yyyy-MM-dd' }}</li>
-        <li class="artists-gallery_card_content_list_item">Favorite Song: {{ artist.song }}</li>
-      </ul>
-    </mat-card-content>
-    <mat-card-actions class="artists-gallery_card_actions">
-      <button matButton (click)="seeArtist(artist.name)">See More</button>
-    </mat-card-actions>
-  </mat-card>
+  @for (artist of filteredArtists$ | async; track $index) {
+    <mat-card appearance="outlined" class="artists-gallery_card">
+      <mat-card-header class="artists-gallery_card_header">
+        <mat-card-title class="artists-gallery_card_header_title">{{ artist.name }}</mat-card-title>
+        <mat-card-subtitle class="artists-gallery_card_header_subtitle">
+          <p class="artists-gallery_card_header_subtitle_text">
+            {{ artist.description }}
+          </p>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="artists-gallery_card_content">
+        <ul class="artists-gallery_card_content_list">
+          <li class="artists-gallery_card_content_list_item">Birth Date: {{ artist.bith_date | date: 'yyyy-MM-dd' }}</li>
+          <li class="artists-gallery_card_content_list_item">Favorite Song: {{ artist.song }}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions class="artists-gallery_card_actions">
+        <button matButton (click)="seeArtist(artist.name)">See More</button>
+      </mat-card-actions>
+    </mat-card>
+  }
 
   <!-- NO ARTIST FOUND -->
-  @if (filteredArtist.length === 0) {
+  @if ((filteredArtists$ | async)?.length === 0) {
     <p>No Artist found.</p>
   }
 

@@ -1,13 +1,14 @@
 <div class="artists-filters">
   <form class="artists-filters_form"
     [formGroup]="searchArtistForm"
+    (ngSubmit)="search()"
   >
 
     <div class="artists-filters_form_fields">
       <!-- artist -->
       <mat-form-field class="artists-filters_form_field">
         <mat-label>Artist</mat-label>
-        <input (input)="filterByArtist($event)"
+        <input
           placeholder="Ex: Justin Bieber" matInput formControlName="artist" />
       </mat-form-field>
 
