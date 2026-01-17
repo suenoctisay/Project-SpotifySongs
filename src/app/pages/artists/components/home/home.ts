@@ -30,10 +30,6 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 })
 
 export class ArtistsHomeCompoenent {
-  artistFilterValues = {
-    artist: '',
-  };
-
   constructor(
     private spinnerService: SpinnerService
   ) { }
@@ -44,10 +40,6 @@ export class ArtistsHomeCompoenent {
     setTimeout(() => {
       this.spinnerService.hide();
     }, 3000);
-  }
-
-  onArtistFilterValues(saveValue: { artist: string }): void {
-    this.artistFilterValues = saveValue;
   }
 
 }

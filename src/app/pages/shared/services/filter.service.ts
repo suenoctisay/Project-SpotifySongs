@@ -8,14 +8,14 @@ import { Playlist } from '../../playlist/interface/playlist.interface';
 })
 
 export class FilterService {
-  private filterSongs$ = new BehaviorSubject<any>('');
-  searchTerm$ = this.filterSongs$.asObservable();
+  private filter$ = new BehaviorSubject<any>('');
+  searchTerm$ = this.filter$.asObservable();
 
   constructor() { }
 
   // FILTER FUNCTION
   setValue(value: any) {
-    this.filterSongs$.next(value);
+    this.filter$.next(value);
   }
   getValue(): Observable<any> {
     return this.searchTerm$;
